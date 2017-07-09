@@ -1,11 +1,15 @@
-angular.module('app')
+(function (){
+  angular.module('app')
 
-  .component('cloudsound', {
+    .component('cloudsound', {
 
-    controller: function () {
-      const vm = this
+      controller: controller,
+      templateUrl: './app/cloudsound.html',
+    })
 
-      vm.foo = 'yo'
-    },
-    templateUrl: './app/cloudsound.html',
-  })
+  function controller() {
+    const vm = this
+
+    vm.foo = 'yo0hoo'
+  }
+})()
