@@ -1,3 +1,11 @@
 .navbar {
-  background-color: rgb(121, 178, 252)
+  background-color: #0d1b2a;
+}
+
+.navbar-item {
+  color: #e0e1dd
+}
+
+.body {
+  background-color: #0d1b2a;
 }
