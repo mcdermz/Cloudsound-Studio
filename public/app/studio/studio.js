@@ -1,4 +1,3 @@
-console.log('sanity studio');
 (function (){
   angular.module('app')
     .component('studio', {
