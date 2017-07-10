@@ -1,0 +1,20 @@
+.studio-container {
+  padding-top: 3.25rem;
+}
+
+.track-container {
+  border: 3px solid white;
+  height: auto;
+}
+
+.chat-master-container {
+  border: 3px solid white;
+}
+
+.chat-component {
+  border: 1px solid lightgreen;
+}
+
+.master-component {
+  border: 1px solid lightblue;
+}
