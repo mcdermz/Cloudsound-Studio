@@ -8,14 +8,9 @@
     })
 
   function controller() {
-    const vm = this
-
-    var socket = io('http://localhost');
-    socket.on('news', function (data) {
+    const socket = io('http://localhost');
+    socket.on('welcome', function(data){
       console.log(data);
-      socket.emit('my other event', { my: 'data' });
-    });
-
-    vm.foo = 'yo0hoo'
+    })
   }
 })()

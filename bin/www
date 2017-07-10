@@ -31,12 +31,13 @@ server.on('error', onError);
 server.on('listening', onListening);
 
 io.on('connection', function (socket) {
-  console.log(socket.id);
-  socket.emit('news', { hello: socket.id });
-  socket.on('my other event', function (data) {
-    console.log(data);
+  socket.emit('welcome', 'enter a room name to get started');
+  socket.on('create room', function (data) {
+    socket.join(data)
+    io.to(data).emit('welcome', 'hi! welcome to ' + data)
   });
 });
+
 /**
  * Normalize a port into a number, string, or false.
  */
