@@ -1,13 +1,14 @@
+console.log('sanity studio');
 (function (){
   angular.module('app')
-    .component('splash', {
+    .component('studio', {
       controller: controller,
-      templateUrl: './app/splash/splash.html',
+      templateUrl: './app/studio/studio.html',
     })
 
   function controller() {
     const vm = this
 
-    vm.foo = 'SPLASH'
+    vm.foo = 'STUDIO'
   }
 })()

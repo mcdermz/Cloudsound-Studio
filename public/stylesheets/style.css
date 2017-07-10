@@ -7,8 +7,9 @@
 }
 
 body {
+  z-index: 0;
   height: 100vh;
-  background-color: #415a77;
+  background-color: #184f7e;
 }
 
 .box.cs-splash {
@@ -20,4 +21,8 @@ body {
 
 .splash-title {
   color: #e0e1dd;
+}
+
+h1 {
+  color: white
 }
