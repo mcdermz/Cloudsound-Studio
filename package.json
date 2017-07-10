@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "dev": "lite-server --baseDir='public'"
+    "ls": "lite-server --baseDir='public'",
+    "dev": "nodemon"
   },
   "dependencies": {
     "body-parser": "~1.17.1",
@@ -16,6 +17,7 @@
     "serve-favicon": "~2.4.2"
   },
   "devDependencies": {
-    "lite-server": "^2.3.0"
+    "lite-server": "^2.3.0",
+    "nodemon": "^1.11.0"
   }
 }
