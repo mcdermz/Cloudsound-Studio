@@ -11,8 +11,8 @@ body {
   background-color: #415a77;
 }
 
-.cs-splash {
-  height: 25vh;
+.box.cs-splash {
+  height: 18rem;
   background-image: url('http://eskipaper.com/images/cloud-background-2.jpg');
   margin-top: 5rem;
   box-shadow: inset 0 0 1em #1b263b, 0 0 1em #376996;
