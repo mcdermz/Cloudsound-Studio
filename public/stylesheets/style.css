@@ -1,5 +1,9 @@
 .navbar {
   background-color: #0d1b2a;
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 
 .navbar-item {
