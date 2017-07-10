@@ -9,7 +9,7 @@
       <div class="column is-half is-offset-one-quarter">
         <div class="field">
           <p class="control">
-            <input ng-model="$ctrl.roomName" class="input is-large" type="text" placeholder="Large input">
+            <input ng-keyup="$ctrl.keyup($event)" ng-model="$ctrl.roomName" class="input is-large" type="text" placeholder="Large input">
           </p>
         </div>
       </div>
