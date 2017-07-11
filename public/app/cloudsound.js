@@ -8,8 +8,9 @@
     })
 
   function controller() {
-    const vm = this
-
-    vm.foo = 'yo0hoo'
+    const socket = io('http://localhost');
+    socket.on('welcome', function(data){
+      console.log(data);
+    })
   }
 })()
