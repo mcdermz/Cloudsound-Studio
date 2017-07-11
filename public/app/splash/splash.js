@@ -5,26 +5,19 @@
       templateUrl: './app/splash/splash.html',
     })
 
-  controller.$inject = ['socketService']
+  controller.$inject = ['socketService', '$state']
 
-  function controller(socketService) {
+  function controller(socketService, $state) {
     const vm = this
-    const socket = socketService.socket
-
-    vm.foo = 'SPLASH'
-
-    vm.createName = function(name){
-      if (name){
-        socket.emit('create room', name)
-        vm.roomName = ''
-      }
-      else {
-        console.log('enter a name!');
-      }
+    
+    vm.$onInit = function() {
+      vm.roomName = ''
     }
 
     vm.keyup = function(event) {
-      if (event.key === 'Enter') vm.createName(vm.roomName)
+      if (event.key === 'Enter') {
+        $state.go('studio', {room: vm.roomName})
+      }
     }
   }
 })()

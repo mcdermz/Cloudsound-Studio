@@ -16,10 +16,15 @@
         url: '/',
         component: 'cloudsound',
       })
-      .state({
-        name: 'studio',
+      .state('studio', {
         url: '/:room',
         component: 'studio',
+      })
+
+    $urlRouterProvider
+      .when('', '/')
+      .when('/:room', function() {
+        return $stateParams.room
       })
   }
 
