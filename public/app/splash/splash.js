@@ -7,10 +7,10 @@
 
   function controller() {
     const vm = this
+    const socket = io('http://localhost');
 
     vm.foo = 'SPLASH'
 
-    const socket = io('http://localhost');
     vm.createName = function(name){
       if (name){
         socket.emit('create room', name)
