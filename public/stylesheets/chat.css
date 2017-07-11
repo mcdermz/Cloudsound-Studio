@@ -1,5 +1,20 @@
-.chat-component {
-  width: 100%;
-  padding-top: 100%;
+.chat-component .content{
+  height: 15rem;
+  overflow: scroll;
   background-color: white;
+}
+
+#messages {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+}
+
+#messages li {
+    padding: 5px 10px;
+}
+
+#messages li:nth-child(even){
+  background: rgb(182, 182, 182);
 }
