@@ -8,9 +8,5 @@
     })
 
   function controller() {
-    const socket = io('http://localhost');
-    socket.on('welcome', function(data){
-      console.log(data);
-    })
   }
 })()

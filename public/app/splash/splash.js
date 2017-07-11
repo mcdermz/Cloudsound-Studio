@@ -5,15 +5,17 @@
       templateUrl: './app/splash/splash.html',
     })
 
+  // controller.$inject = ['socketService']
+
   function controller() {
     const vm = this
-    const socket = io('http://localhost');
+    // const socket = socketService.socket
 
     vm.foo = 'SPLASH'
 
     vm.createName = function(name){
       if (name){
-        socket.emit('create room', name)
+        // socket.emit('create room', name)
         vm.roomName = ''
       }
       else {
