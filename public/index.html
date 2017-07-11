@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="app">
   <head>
+    <base href="/">
     <meta charset="utf-8">
     <title>Cloudsound</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.3/css/bulma.css">
@@ -8,10 +9,12 @@
     <link rel="stylesheet" href="/stylesheets/studio.css">
   </head>
   <body>
-    <cloudsound></cloudsound>
+    <ui-view></ui-view>
     <script src="/angular/angular.js"></script>
     <script src="/socket.io/socket.io.js"></script>
+    <script src="/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script type="text/javascript" src="./app.module.js"></script>
+    <script type="text/javascript" src="./app.routes.js"></script>
     <script type="text/javascript" src="./app/socket-service.js"></script>
     <script type="text/javascript" src="./app/cloudsound.js"></script>
     <script type="text/javascript" src="./app/navbar/navbar.js"></script>
