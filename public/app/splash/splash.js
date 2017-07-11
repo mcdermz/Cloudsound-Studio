@@ -15,7 +15,6 @@
 
     vm.createName = function(name){
       if (name){
-        console.log(name);
         socket.emit('create room', name)
         vm.roomName = ''
       }

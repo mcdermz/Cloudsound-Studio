@@ -7,8 +7,5 @@
       templateUrl: './app/cloudsound.html',
     })
 
-  function controller() {
-     
-
-  }
+  function controller() {}
 })()
