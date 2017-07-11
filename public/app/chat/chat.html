@@ -5,7 +5,9 @@
       <li>yo</li>
     </ul>
   </div>
-  <div class="columns">
-    <input class="input" id="m" autocomplete="off"/><a class="button is-info">Send</a>
-  </div>
+  <form id="chat" ng-submit="$ctrl.sendChat($ctrl.msg)">
+    <div class="columns">
+      <input ng-model="$ctrl.msg" class="input" id="m" autocomplete="off"/><button form="chat" type="submit" class="button is-info">Send</button>
+    </div>
+  </form>
 </div>

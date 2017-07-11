@@ -7,6 +7,7 @@
 var app = require('../app');
 var debug = require('debug')('cloudsound:server');
 var http = require('http');
+const io = require('./io')
 
 /**
  * Get port from environment and store in Express.
@@ -23,20 +24,14 @@ var server = http.Server(app);
 
 
 /**
- * Establish web socket connection.
- */
-
-const io = require('socket.io')(server);
-
-/**
  * Listen on provided port, on all network interfaces.
  */
 
-server.listen(port);
+const listener = server.listen(port);
+io.attach(listener);
 server.on('error', onError);
 server.on('listening', onListening);
 
-io.on('connection', socketConnect);
 
 /**
  * Normalize a port into a number, string, or false.
@@ -96,22 +91,4 @@ function onListening() {
     ? 'pipe ' + addr
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
-}
-
-/**
- * Logic for web sockets.
- */
-
-function socketConnect(socket) {
-  socket.emit('welcome', 'enter a ROOM NAM to get started');
-
-  socket.on('test', function(msg){
-    console.log(msg, '!');
-  })
-
-  socket.on('create room', function (roomName) {
-    console.log('room created!');
-    socket.join(roomName)
-    io.to(roomName).emit('welcome', `${socket.id} has entered room: ${roomName}!`)
-  });
 }
