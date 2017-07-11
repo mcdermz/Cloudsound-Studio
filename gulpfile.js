@@ -5,7 +5,7 @@ const nodemon = require('gulp-nodemon')
 gulp.task('default', ['browser-sync', 'nodemon'], function () {
 })
 
-gulp.task('browser-sync', ['nodemon'], function() {
+gulp.task('browser-sync', function() {
   browserSync.init({
     proxy: 'http://localhost:4000',
     files: ['public/**/*.*'],
@@ -20,6 +20,7 @@ gulp.task('nodemon', function (cb) {
 
   return nodemon({
     script: './bin/www',
+    ext: 'html js',
     ignore: [
       'test/',
       'public/',

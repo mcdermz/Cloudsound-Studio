@@ -103,7 +103,7 @@ function onListening() {
  */
 
 function socketConnect(socket) {
-  socket.emit('welcome', 'enter a room name to get started');
+  socket.emit('welcome', 'enter a ROOM NAM to get started');
 
   socket.on('test', function(msg){
     console.log(msg, '!');
