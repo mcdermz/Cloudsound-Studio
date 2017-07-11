@@ -105,7 +105,12 @@ function onListening() {
 function socketConnect(socket) {
   socket.emit('welcome', 'enter a room name to get started');
 
+  socket.on('test', function(msg){
+    console.log(msg, '!');
+  })
+
   socket.on('create room', function (roomName) {
+    console.log('room created!');
     socket.join(roomName)
     io.to(roomName).emit('welcome', `${socket.id} has entered room: ${roomName}!`)
   });

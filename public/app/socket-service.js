@@ -6,11 +6,11 @@
 
     .service('socketService', service)
 
-    service.$inject = ['socket']
+    service.$inject = []
 
-    function service(socket){
-      const socket = socket.io('http://localhost');
-      socket.on('welcome', function(data){
+    function service(){
+      this.socket = io()
+      this.socket.on('welcome', function(data){
         console.log(data);
       })
     }

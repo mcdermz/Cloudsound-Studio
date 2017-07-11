@@ -1,3 +1,3 @@
 (function () {
-  angular.module('app', ['socket'])
+  angular.module('app', [])
 })()

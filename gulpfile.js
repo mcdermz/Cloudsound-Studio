@@ -2,7 +2,7 @@ const gulp = require('gulp')
 const browserSync = require('browser-sync').create()
 const nodemon = require('gulp-nodemon')
 
-gulp.task('default', ['browser-sync'], function () {
+gulp.task('default', ['browser-sync', 'nodemon'], function () {
 })
 
 gulp.task('browser-sync', ['nodemon'], function() {
@@ -10,7 +10,7 @@ gulp.task('browser-sync', ['nodemon'], function() {
     proxy: 'http://localhost:4000',
     files: ['public/**/*.*'],
     browser: 'google chrome',
-    port: 4000,
+    port: 7000,
         reloadDelay: 1000,
   })
 })
