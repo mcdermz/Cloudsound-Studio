@@ -20,12 +20,6 @@
         url: '/:room',
         component: 'studio',
       })
-
-    $urlRouterProvider
-      .when('', '/')
-      .when('/:room', function() {
-        return $stateParams.room
-      })
   }
 
 }());
