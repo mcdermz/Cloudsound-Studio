@@ -30,7 +30,7 @@
           ctx.decodeAudioData(response.data)
           .then(buffer => {
             source.buffer = buffer
-            source.connect(ctx.destination);
+            source.connect(masterGain);
             source.loop = true;
           })
       }).catch(err => {
@@ -42,10 +42,12 @@
     vm.play = function (){
       vm.getData();
       source.start(0);
+      masterGain.gain.value = 1
     }
 
     vm.stop = function (){
       source.stop()
+      masterGain.gain.value = 0
     }
 
   }
