@@ -5,9 +5,9 @@
       templateUrl: './app/chat/chat.html',
     })
 
-  controller.$inject = ['socketService', '$state']
+  controller.$inject = ['socketService', '$state', '$scope']
 
-  function controller(socketService, $state) {
+  function controller(socketService, $state, $scope) {
     const vm = this
     const socket = socketService.socket
     const roomName = $state.params.room
@@ -22,13 +22,16 @@
 
     vm.sendChat = function(){
       const msg = vm.msg
-      socket.emit('chat message', {room: roomName, msg})
+      socket.emit('sent-message', {room: roomName, msg})
       vm.msg = ''
     }
 
-    socket.on('chat message', function(msg){
-      vm.chatMessages.push(msg)
-      console.log('server says: ', msg);
+    socket.on('received-message', function(received){
+      $scope.$apply(function() {
+        vm.chatMessages.push({message: received})
+      })
+      console.log(vm.chatMessages);
+      console.log('server says: ', received);
     })
   }
 })()

@@ -10,8 +10,8 @@ io.on('connection', function (socket) {
     io.to(roomName).emit('welcome', `${socket.id} has entered room: ${roomName}!`)
   });
 
-  socket.on('chat message', function(data){
-    io.to(data.room).emit('chat message', data.msg)
+  socket.on('sent-message', function(data){
+    io.to(data.room).emit('received-message', data.msg)
   })
 })
 

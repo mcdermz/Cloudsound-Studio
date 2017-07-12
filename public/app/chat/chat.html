@@ -1,10 +1,11 @@
 <div class="box chat-component">
   <div class="content">
-    <ul id="messages" ng-repeat="message in $ctrl.chatMessages track by $index">
-      <li>{{message}}</li>
+    <ul id="messages">
+      <li ng-repeat="m in $ctrl.chatMessages">{{m.message}}</li>
     </ul>
   </div>
   <div class="columns" ng-keyup="$ctrl.keyup()">
-    <input ng-model="$ctrl.msg" class="input" id="chat" autocomplete="off"/><button ng-click="$ctrl.sendChat()"  class="button is-info">Send</button>
+    <input ng-model="$ctrl.msg" class="input" id="chat" autocomplete="off"/>
+    <button ng-click="$ctrl.sendChat()"  class="button is-info">Send</button>
   </div>
 </div>
