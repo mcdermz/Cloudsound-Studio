@@ -30,8 +30,6 @@
       $scope.$apply(function() {
         vm.chatMessages.push({message: received})
       })
-      console.log(vm.chatMessages);
-      console.log('server says: ', received);
     })
   }
 })()

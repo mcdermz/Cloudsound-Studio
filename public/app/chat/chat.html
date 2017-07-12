@@ -1,7 +1,7 @@
 <div class="box chat-component">
   <div class="content">
     <ul id="messages">
-      <li ng-repeat="m in $ctrl.chatMessages">{{m.message}}</li>
+      <li ng-repeat="m in $ctrl.chatMessages" ng-class="{even: $index % 2 !== 0}">{{m.message}}</li>
     </ul>
   </div>
   <div class="columns" ng-keyup="$ctrl.keyup()">
