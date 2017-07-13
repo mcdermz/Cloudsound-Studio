@@ -3,12 +3,16 @@
     .component('tracks', {
       controller: controller,
       templateUrl: './app/tracks/tracks.html',
+      bindings: {
+        trackName: '@'
+      },
     })
 
   controller.$inject = ['socketService', 'audioService', '$state']
 
   function controller(socketService, audioService, $state) {
     const vm = this
+
     const ctx = audioService.ctx
     const gainNode = ctx.createGain()
     gainNode.gain.value = 0
