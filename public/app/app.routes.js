@@ -14,7 +14,7 @@
       .state({
         name: 'home',
         url: '/',
-        component: 'cloudsound',
+        component: 'splash',
       })
       .state('studio', {
         url: '/:room',
