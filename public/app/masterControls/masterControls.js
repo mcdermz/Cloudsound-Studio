@@ -10,13 +10,14 @@
   function controller(socketService, audioService, $state, $scope) {
     const vm = this
     const socket = socketService.socket
+    const roomName = $state.params.room
 
     vm.sendPlayMessage = function (){
-      socket.emit('play track', 'play all')
+      socket.emit('play track', roomName)
     }
 
     vm.sendStopMessage = function (){
-      socket.emit('stop track', 'stop all')
+      socket.emit('stop track', roomName)
     }
   }
 })()
