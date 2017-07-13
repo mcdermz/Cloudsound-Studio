@@ -20,22 +20,26 @@
 
     let source
 
-    vm.getData = function() {
+
+
+    vm.getData = async function() {
       source = ctx.createBufferSource()
-      $http({
-          method: 'GET',
-          url: '/audio/tone-samples.mp3',
-          responseType: 'arraybuffer'
-      }).then(response => {
-          ctx.decodeAudioData(response.data)
-          .then(buffer => {
-            source.buffer = buffer
-            source.connect(masterGain);
-            source.loop = true;
-          })
-      }).catch(err => {
-        console.error(err);
-      })
+
+      try {
+        let response = await $http({
+            method: 'GET',
+            url: '/audio/tone-samples.mp3',
+            responseType: 'arraybuffer'
+        })
+
+        let buffer = await ctx.decodeAudioData(response.data)
+        source.buffer = buffer
+        source.connect(masterGain);
+        source.loop = true;
+      }
+      catch (error) {
+        console.error(error);
+      }
     }
 
 
@@ -46,8 +50,8 @@
     }
 
     vm.stop = function (){
-      source.stop()
       masterGain.gain.value = 0
+      source.stop(ctx.currentTime + 0.1)
     }
 
   }
