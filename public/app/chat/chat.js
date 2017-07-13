@@ -5,11 +5,10 @@
       templateUrl: './app/chat/chat.html',
     })
 
-  controller.$inject = ['socketService', '$state', '$scope']
+  controller.$inject = ['socket', '$state', '$scope']
 
-  function controller(socketService, $state, $scope) {
+  function controller(socket, $state, $scope) {
     const vm = this
-    const socket = socketService.socket
     const roomName = $state.params.room
 
     vm.chatMessages = []
@@ -27,9 +26,11 @@
     }
 
     socket.on('received-message', function(received){
-      $scope.$apply(function() {
-        vm.chatMessages.push({message: received})
-      })
+      vm.chatMessages.push({message: received})
+    })
+
+    socket.on('room created', function(msg) {
+      vm.chatMessages.push({message: msg})
     })
   }
 })()

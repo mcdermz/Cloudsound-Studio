@@ -7,7 +7,7 @@ io.on('connection', function (socket) {
 
   socket.on('create room', function (roomName) {
     socket.join(roomName)
-    io.to(roomName).emit('welcome', `${socket.id} has entered room: ${roomName}!`)
+    io.to(roomName).emit('room created', `${socket.id} has entered room: ${roomName}!`)
   });
 
   socket.on('sent-message', function(data){

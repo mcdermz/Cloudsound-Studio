@@ -32,6 +32,10 @@ ajv@^4.9.1:
     co "^4.6.0"
     json-stable-stringify "^1.0.1"
 
+angular-socket-io@^0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/angular-socket-io/-/angular-socket-io-0.7.0.tgz#78a8d60aa57194a0330bc3137d4da108698b97cf"
+
 angular-ui-router@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/angular-ui-router/-/angular-ui-router-1.0.3.tgz#bf2494caae95c37cf01af3761d89747cfed2db45"

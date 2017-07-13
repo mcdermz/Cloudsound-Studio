@@ -23,7 +23,7 @@
           responseType: 'arraybuffer'
         }
         track.source = this.ctx.createBufferSource()
-        
+
         try {
           let audioData = await $http(urlPkg)
           let buffer = await this.ctx.decodeAudioData(audioData.data)

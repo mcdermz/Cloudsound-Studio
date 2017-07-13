@@ -8,11 +8,10 @@
       },
     })
 
-  controller.$inject = ['socketService', 'audioService', '$state', '$scope']
+  controller.$inject = ['socket', 'audioService', '$state', '$scope']
 
-  function controller(socketService, audioService, $state, $scope) {
+  function controller(socket, audioService, $state, $scope) {
     const vm = this
-    const socket = socketService.socket
     const ctx = audioService.ctx
     const gainNode = ctx.createGain()
     gainNode.gain.value = 0
@@ -24,17 +23,13 @@
     vm.$onInit = function() {
 
     }
-    
+
     socket.on('play track', function(msg){
-      $scope.$apply(function() {
-        vm.play()
-      })
+      vm.play()
     })
 
     socket.on('stop track', function(msg){
-      $scope.$apply(function() {
-        vm.stop()
-      })
+      vm.stop()
     })
 
     vm.play = function (){

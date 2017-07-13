@@ -3,15 +3,12 @@
 
   angular.module('app')
 
-    .service('socketService', service)
+    .factory('socket', factory)
 
-    service.$inject = []
-
-    function service(){
-      this.socket = io()
-      this.socket.on('welcome', function(data){
-        console.log(data);
-
-      })
+    function factory(socketFactory) {
+      return socketFactory({
+        prefix: '',
+        ioSocket: io.connect('/')
+      });
     }
 })()

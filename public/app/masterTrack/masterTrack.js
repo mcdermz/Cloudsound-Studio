@@ -5,11 +5,10 @@
       templateUrl: './app/masterTrack/masterTrack.html',
     })
 
-  controller.$inject = ['socketService', 'audioService', '$state', '$scope']
+  controller.$inject = ['socket', 'audioService', '$state', '$scope']
 
-  function controller(socketService, audioService, $state, $scope) {
+  function controller(socket, audioService, $state, $scope) {
     const vm = this
-    const socket = socketService.socket
     const roomName = $state.params.room
 
     vm.sendPlayMessage = function (){

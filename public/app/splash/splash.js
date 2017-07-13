@@ -5,11 +5,15 @@
       templateUrl: './app/splash/splash.html',
     })
 
-  controller.$inject = ['socketService', '$state']
+  controller.$inject = ['socket', '$state']
 
-  function controller(socketService, $state) {
+  function controller(socket, $state) {
     const vm = this
-    
+
+    socket.on('welcome', function(msg) {
+      console.log(msg);
+    })
+
     vm.$onInit = function() {
       vm.roomName = ''
     }
