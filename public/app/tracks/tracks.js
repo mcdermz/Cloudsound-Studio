@@ -22,27 +22,20 @@
     const track = { gainNode, url }
 
     vm.$onInit = function() {
-      const socketPlayEvent = 'play ' + vm.trackName
-      vm.sendPlayMessage = function (){
-        socket.emit('play track', socketPlayEvent)
-      }
-      socket.on('play track', function(msg){
-        $scope.$apply(function() {
-          vm.play()
-        })
-      })
 
-      const socketStopEvent = 'stop ' + vm.trackName
-      vm.sendStopMessage = function (){
-        socket.emit('stop track', socketStopEvent)
-      }
-
-      socket.on('stop track', function(msg){
-        $scope.$apply(function() {
-          vm.stop()
-        })
-      })
     }
+    
+    socket.on('play track', function(msg){
+      $scope.$apply(function() {
+        vm.play()
+      })
+    })
+
+    socket.on('stop track', function(msg){
+      $scope.$apply(function() {
+        vm.stop()
+      })
+    })
 
     vm.play = function (){
       vm.playing = true
