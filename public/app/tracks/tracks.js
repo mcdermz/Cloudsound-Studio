@@ -8,7 +8,6 @@
   controller.$inject = ['socketService', '$state', '$http']
   function controller(socketService, $state, $http) {
     const vm = this
-    const socket = socketService.socket
 
     window.AudioContext = window.AudioContext||window.webkitAudioContext
 
@@ -20,19 +19,17 @@
 
     let source
 
+    const audioObj = {
+      method: 'GET',
+      url: '/audio/tone-samples.mp3',
+      responseType: 'arraybuffer'
+    }
 
-
-    vm.getData = async function() {
+    vm.getData = async function(audio) {
       source = ctx.createBufferSource()
-
       try {
-        let response = await $http({
-            method: 'GET',
-            url: '/audio/tone-samples.mp3',
-            responseType: 'arraybuffer'
-        })
-
-        let buffer = await ctx.decodeAudioData(response.data)
+        let audioData = await $http(audio)
+        let buffer = await ctx.decodeAudioData(audioData.data)
         source.buffer = buffer
         source.connect(masterGain);
         source.loop = true;
@@ -42,14 +39,15 @@
       }
     }
 
-
     vm.play = function (){
-      vm.getData();
+      vm.playing = true
+      vm.getData(audioObj);
       source.start(0);
       masterGain.gain.value = 1
     }
 
     vm.stop = function (){
+      vm.playing = false
       masterGain.gain.value = 0
       source.stop(ctx.currentTime + 0.1)
     }
