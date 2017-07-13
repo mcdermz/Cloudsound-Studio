@@ -1,8 +1,8 @@
 (function (){
   angular.module('app')
-    .component('masterControls', {
+    .component('masterTrack', {
       controller: controller,
-      templateUrl: './app/masterControls/masterControls.html',
+      templateUrl: './app/masterTrack/masterTrack.html',
     })
 
   controller.$inject = ['socketService', 'audioService', '$state', '$scope']
