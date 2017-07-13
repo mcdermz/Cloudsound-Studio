@@ -13,6 +13,16 @@ io.on('connection', function (socket) {
   socket.on('sent-message', function(data){
     io.to(data.room).emit('received-message', data.msg)
   })
+
+  socket.on('play track', function(socketEvent){
+    const response = `Server says ${socketEvent}`
+    io.emit('play track', response)
+  })
+
+  socket.on('stop track', function(socketEvent){
+    const response = `Server says ${socketEvent}`
+    io.emit('stop track', response)
+  })
 })
 
 module.exports = io;

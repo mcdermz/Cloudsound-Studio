@@ -10,7 +10,7 @@
 
   controller.$inject = ['socketService', 'audioService', '$state', '$scope']
 
-  function controller(socketService, audioService, $state, $scope){
+  function controller(socketService, audioService, $state, $scope) {
     const vm = this
     const socket = socketService.socket
     const ctx = audioService.ctx
