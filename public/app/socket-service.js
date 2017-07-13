@@ -1,4 +1,3 @@
-
 (function (){
   'use strict';
 
@@ -12,7 +11,7 @@
       this.socket = io()
       this.socket.on('welcome', function(data){
         console.log(data);
-        
+
       })
     }
 })()
