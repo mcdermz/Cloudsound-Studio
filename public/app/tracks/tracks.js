@@ -6,24 +6,28 @@
     })
 
   controller.$inject = ['socketService', 'audioService', '$state']
+
   function controller(socketService, audioService, $state) {
     const vm = this
-    const track = {
-      url: '/audio/tone-samples.mp3',
-    }
+    const ctx = audioService.ctx
+    const gainNode = ctx.createGain()
+    gainNode.gain.value = 0
+
+    const url = '/audio/tone-samples.mp3'
+
+    const track = { gainNode, url }
 
     vm.play = function (){
       vm.playing = true
       audioService.getData(track);
       track.source.start(0);
-      audioService.masterGain.gain.value = 1
+      gainNode.gain.value = 1
     }
 
     vm.stop = function (){
       vm.playing = false
-      audioService.masterGain.gain.value = 0
-      track.source.stop(audioService.ctx.currentTime + 0.1)
+      gainNode.gain.value = 0
+      track.source.stop(ctx.currentTime + 0.1)
     }
-
   }
 })()
