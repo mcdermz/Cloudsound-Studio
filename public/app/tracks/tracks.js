@@ -17,22 +17,25 @@
     masterGain.gain.value = 0
     masterGain.connect(ctx.destination)
 
-    let source
 
-    const audioObj = {
-      method: 'GET',
+    const track = {
       url: '/audio/tone-samples.mp3',
-      responseType: 'arraybuffer'
     }
 
-    vm.getData = async function(audio) {
-      source = ctx.createBufferSource()
+    vm.getData = async function(track) {
+      const urlPkg = {
+        method: 'GET',
+        url: track.url,
+        responseType: 'arraybuffer'
+      }
+
+      track.source = ctx.createBufferSource()
       try {
-        let audioData = await $http(audio)
+        let audioData = await $http(urlPkg)
         let buffer = await ctx.decodeAudioData(audioData.data)
-        source.buffer = buffer
-        source.connect(masterGain);
-        source.loop = true;
+        track.source.buffer = buffer
+        track.source.connect(masterGain);
+        track.source.loop = true;
       }
       catch (error) {
         console.error(error);
@@ -41,15 +44,15 @@
 
     vm.play = function (){
       vm.playing = true
-      vm.getData(audioObj);
-      source.start(0);
+      vm.getData(track);
+      track.source.start(0);
       masterGain.gain.value = 1
     }
 
     vm.stop = function (){
       vm.playing = false
       masterGain.gain.value = 0
-      source.stop(ctx.currentTime + 0.1)
+      track.source.stop(ctx.currentTime + 0.1)
     }
 
   }
