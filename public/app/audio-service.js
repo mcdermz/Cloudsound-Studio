@@ -28,7 +28,8 @@
           let audioData = await $http(urlPkg)
           let buffer = await this.ctx.decodeAudioData(audioData.data)
           track.source.buffer = buffer
-          track.source.connect(track.gainNode)
+          track.source.connect(track.analyser)
+          track.analyser.connect(track.gainNode)
           track.gainNode.connect(this.masterGain)
           track.source.loop = true;
         }

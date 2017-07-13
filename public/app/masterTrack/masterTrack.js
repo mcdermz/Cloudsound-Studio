@@ -12,7 +12,6 @@
     const roomName = $state.params.room
 
     vm.faderChange = function() {
-      console.log(vm.fader);
       audioService.masterGain.gain.value = vm.fader / 100
     }
 
