@@ -12,7 +12,6 @@
 
     vm.$onInit = function(){
       const roomName = $state.params.room
-
       vm.createName(roomName)
     }
 
@@ -24,7 +23,5 @@
         console.log('enter a name!');
       }
     }
-
-    vm.foo = 'STUDIO'
   }
 })()
