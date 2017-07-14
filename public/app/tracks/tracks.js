@@ -35,6 +35,10 @@
       vm.stop()
     })
 
+    vm.faderChange = function() {
+      gainNode.gain.value = vm.fader / 100
+    }
+
     vm.play = function (){
       vm.playing = true
       audioService.getData(track);

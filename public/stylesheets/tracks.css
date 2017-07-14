@@ -13,8 +13,8 @@ canvas {
 }
 
 .track-fader {
-  -webkit-transform: rotate(90deg);
-  -webkit-transform-origin: bottom right;
+  -webkit-transform: rotate(-90deg);
+  -webkit-transform-origin: top;
 }
 
 .tracks {
