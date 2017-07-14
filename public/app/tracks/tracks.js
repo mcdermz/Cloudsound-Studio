@@ -8,27 +8,20 @@
       },
     })
 
-  controller.$inject = ['socket', 'audioService', 'visualizerService', '$state', '$scope']
+  controller.$inject = ['socket', 'audioService', '$state', '$scope']
 
-  function controller(socket, audioService, visualizerService, $state, $scope) {
+  function controller(socket, audioService, $state, $scope) {
     const vm = this
     const ctx = audioService.ctx
     const gainNode = ctx.createGain()
-    gainNode.gain.value = 0
+          gainNode.gain.value = 0
 
     const url = '/audio/tone-samples.mp3'
-
-    const analyser = ctx.createAnalyser();
-    analyser.minDecibels = -90;
-    analyser.maxDecibels = -10;
-    analyser.smoothingTimeConstant = 0.85;
-
-    const track = { gainNode, analyser, url }
+    const track = { gainNode, url }
 
     vm.$onInit = function() {
       track.trackName = vm.trackName
     }
-
 
     socket.on('play track', function(msg){
       vm.play()
@@ -41,7 +34,6 @@
     vm.play = function (){
       vm.playing = true
       audioService.getData(track);
-      visualizerService.visualizeTrack(track)
       track.source.start(0);
       gainNode.gain.value = 1
     }
