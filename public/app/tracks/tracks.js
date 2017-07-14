@@ -26,8 +26,33 @@
     const track = { gainNode, analyser, url }
 
     vm.$onInit = function() {
-      vm.trackId = vm.trackName
-      var canvas = document.querySelector(`[data-track='${vm.trackId}']`);
+    }
+
+
+    socket.on('play track', function(msg){
+      vm.play()
+    })
+
+    socket.on('stop track', function(msg){
+      vm.stop()
+    })
+
+    vm.play = function (){
+      vm.playing = true
+      audioService.getData(track);
+      vm.timmy()
+      track.source.start(0);
+      gainNode.gain.value = 1
+    }
+
+    vm.stop = function (){
+      vm.playing = false
+      gainNode.gain.value = 0
+      track.source.stop(ctx.currentTime + 0.1)
+    }
+
+    vm.timmy = function() {
+      var canvas = document.querySelector('#'+ vm.trackName)
       console.log(canvas);
       var canvasCtx = canvas.getContext("2d");
 
@@ -36,6 +61,7 @@
       canvas.setAttribute('width',intendedWidth);
 
       var drawVisual
+
 
 
       vm.visualize = function() {
@@ -76,29 +102,6 @@
 
       vm.visualize()
     }
-
-    socket.on('play track', function(msg){
-      vm.play()
-    })
-
-    socket.on('stop track', function(msg){
-      vm.stop()
-    })
-
-    vm.play = function (){
-      vm.playing = true
-      audioService.getData(track);
-      vm.visualize()
-      track.source.start(0);
-      gainNode.gain.value = 1
-    }
-
-    vm.stop = function (){
-      vm.playing = false
-      gainNode.gain.value = 0
-      track.source.stop(ctx.currentTime + 0.1)
-    }
-
 
   }
 })()
