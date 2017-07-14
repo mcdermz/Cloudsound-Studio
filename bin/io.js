@@ -21,6 +21,10 @@ io.on('connection', function (socket) {
   socket.on('stop track', function(roomName){
     io.to(roomName).emit('stop track', 'Server: all tracks are stopped!')
   })
+
+  socket.on('send fader level', function(data){
+    io.to(data.room).emit('receive fader level', data)
+  })
 })
 
 module.exports = io;

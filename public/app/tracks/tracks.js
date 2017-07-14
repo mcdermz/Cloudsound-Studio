@@ -35,9 +35,20 @@
       vm.stop()
     })
 
+    socket.on('receive fader level', function(msg){
+      if (msg.track === vm.trackName) gainNode.gain.value = msg.level
+    })
+
     vm.faderChange = function() {
-      gainNode.gain.value = vm.fader / 100
+      const data = {
+        room: $state.params.room,
+        track: vm.trackName,
+        level: vm.fader/100
+      }
+      socket.emit('send fader level', data)
     }
+
+
 
     vm.play = function (){
       vm.playing = true
