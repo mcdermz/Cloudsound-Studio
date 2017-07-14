@@ -11,3 +11,12 @@ canvas {
   box-shadow: 0 -2px 4px rgba(0,0,0,0.7),
               0 3px 4px rgba(0,0,0,0.7);
 }
+
+.track-fader {
+  -webkit-transform: rotate(90deg);
+  -webkit-transform-origin: bottom right;
+}
+
+.tracks {
+  height: 10rem;
+}
