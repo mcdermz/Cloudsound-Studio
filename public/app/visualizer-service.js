@@ -9,24 +9,34 @@
       this.visualizeTrack = function(track) {
         visualize(track)
       }
+
+      this.canvasInit = function(canvas){
+        canvasInit(canvas)
+      }
+    }
+
+    function canvasInit(canvas) {
+      const canvasCtx = canvas.getContext("2d")
+      const intendedWidth = document.querySelector('.wrapper').clientWidth;
+      canvas.setAttribute('width',intendedWidth)
+      const WIDTH = canvas.width
+      const HEIGHT = canvas.height
+      canvasCtx.clearRect(0, 0, WIDTH, HEIGHT)
+      canvasCtx.fillStyle = 'rgb(0, 0, 0)';
+      canvasCtx.fillRect(0, 0, WIDTH, HEIGHT);
+
+      return { canvasCtx, WIDTH, HEIGHT }
     }
 
     function visualize(track) {
-      const analyser = track.analyser
       const canvas = document.querySelector('#'+ track.trackName)
-      const canvasCtx = canvas.getContext("2d");
-      const intendedWidth = document.querySelector('.wrapper').clientWidth;
-      let drawVisual
-
-      canvas.setAttribute('width',intendedWidth);
-      const WIDTH = canvas.width;
-      const HEIGHT = canvas.height;
+      const ctx = canvasInit(canvas)
+      const analyser = track.analyser
       analyser.fftSize = 256;
       let bufferLength = analyser.frequencyBinCount;
       const dataArray = new Uint8Array(bufferLength);
 
-      canvasCtx.clearRect(0, 0, WIDTH, HEIGHT);
-
+      let drawVisual
       draw();
 
       function draw() {
@@ -34,18 +44,18 @@
 
         analyser.getByteFrequencyData(dataArray);
 
-        canvasCtx.fillStyle = 'rgb(0, 0, 0)';
-        canvasCtx.fillRect(0, 0, WIDTH, HEIGHT);
+        ctx.canvasCtx.fillStyle = 'rgb(0, 0, 0)';
+        ctx.canvasCtx.fillRect(0, 0, ctx.WIDTH, ctx.HEIGHT);
 
-        let barWidth = (WIDTH / bufferLength) * 2.5;
+        let barWidth = (ctx.WIDTH / bufferLength) * 2.5;
         let barHeight;
         let x = 0;
 
         for(var i = 0; i < bufferLength; i++) {
           barHeight = dataArray[i]/2;
 
-          canvasCtx.fillStyle = 'rgb(' + Math.floor(barHeight+100) + ',50,50)';
-          canvasCtx.fillRect(x,HEIGHT-barHeight/2,barWidth,barHeight/2);
+          ctx.canvasCtx.fillStyle = 'rgb(' + Math.floor(barHeight+100) + ',50,50)';
+          ctx.canvasCtx.fillRect(x,ctx.HEIGHT-barHeight/2,barWidth,barHeight/2);
 
           x += barWidth + 1;
         };

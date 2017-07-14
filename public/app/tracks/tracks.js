@@ -8,9 +8,9 @@
       },
     })
 
-  controller.$inject = ['socket', 'audioService', '$state', '$scope']
+  controller.$inject = ['socket', 'audioService', 'visualizerService', '$state', '$scope']
 
-  function controller(socket, audioService, $state, $scope) {
+  function controller(socket, audioService, visualizerService, $state, $scope) {
     const vm = this
     const ctx = audioService.ctx
     const gainNode = ctx.createGain()
@@ -20,6 +20,10 @@
     const track = { gainNode, url }
 
     vm.$onInit = function() {
+      const canvases = document.querySelectorAll('.visualizer')
+      canvases.forEach(canvas => {
+        visualizerService.canvasInit(canvas)
+      })
       track.trackName = vm.trackName
     }
 
