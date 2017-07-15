@@ -14,12 +14,14 @@ io.on('connection', function (socket) {
     io.to(data.room).emit('received-message', data.msg)
   })
 
-  socket.on('play track', function(roomName){
-    io.to(roomName).emit('play track', 'Server: all tracks are playing!')
+  socket.on('play track', function(data){
+    io.to(data.room).emit('play track', 'Server: all tracks are playing!')
+    io.to(data.room).emit('play status', data)
   })
 
-  socket.on('stop track', function(roomName){
-    io.to(roomName).emit('stop track', 'Server: all tracks are stopped!')
+  socket.on('stop track', function(data){
+    io.to(data.room).emit('stop track', 'Server: all tracks are stopped!')
+    io.to(data.room).emit('play status', data)
   })
 
   socket.on('send fader level', function(data){
