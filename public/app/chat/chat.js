@@ -16,20 +16,26 @@
     vm.keyup = function() {
       if (event.key === 'Enter') {
         vm.sendChat()
+        let msgContainer = document.querySelector('.content')
+        console.log('top ', msgContainer.scrollTop);
       }
     }
 
     vm.sendChat = function(){
-
       if (vm.msg && vm.msg.trim() !== ''){
         const msg = vm.msg.trim()
         socket.emit('sent-message', {room: roomName, msg})
         vm.msg = ''
+
       }
     }
 
     socket.on('received-message', function(received){
       vm.chatMessages.push({message: received})
+      let msgContainer = document.querySelector('.content')
+      setTimeout(function(){
+        msgContainer.scrollTop = msgContainer.scrollHeight - 202.25
+      },10)
     })
 
     socket.on('room created', function(msg) {
