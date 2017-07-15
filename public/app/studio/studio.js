@@ -5,13 +5,14 @@
       templateUrl: './app/studio/studio.html',
     })
 
-  controller.$inject = ['socket', '$state']
-  function controller(socket, $state) {
+  controller.$inject = ['socket', 'visualizerService', '$state']
+  function controller(socket, visualizerService, $state) {
     const vm = this
 
     vm.$onInit = function(){
       const roomName = $state.params.room
       vm.createRoom(roomName)
+      
     }
 
     vm.createRoom = function(name){

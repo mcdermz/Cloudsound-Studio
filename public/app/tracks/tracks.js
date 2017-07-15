@@ -14,7 +14,7 @@
     const vm = this
     const ctx = audioService.ctx
     const gainNode = ctx.createGain()
-          gainNode.gain.value = 0
+          gainNode.gain.value = 0.5
 
     const url = '/audio/tone-samples.mp3'
     const track = { gainNode, url }
@@ -28,11 +28,11 @@
     }
 
     socket.on('play track', function(msg){
-      vm.play()
+      play()
     })
 
     socket.on('stop track', function(msg){
-      vm.stop()
+      stop()
     })
 
     socket.on('receive fader level', function(msg){
@@ -51,17 +51,13 @@
       socket.emit('send fader level', data)
     }
 
-
-
-    vm.play = function (){
-      vm.playing = true
+    const play = function (){
       audioService.getData(track);
       track.source.start(0);
-      gainNode.gain.value = 1
+      gainNode.gain.value = vm.fader
     }
 
-    vm.stop = function (){
-      vm.playing = false
+    const stop = function (){
       gainNode.gain.value = 0
       track.source.stop(ctx.currentTime + 0.1)
     }
