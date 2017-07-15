@@ -25,7 +25,7 @@ io.on('connection', function (socket) {
   })
 
   socket.on('send fader level', function(data){
-    io.to(data.room).emit('receive fader level', data)
+    socket.to(data.room).emit('receive fader level', data)
   })
 })
 
