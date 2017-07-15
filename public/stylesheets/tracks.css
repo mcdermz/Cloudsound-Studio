@@ -5,14 +5,26 @@
 }
 
 canvas {
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
-  margin-bottom: -3px;
-  box-shadow: 0 -2px 4px rgba(0,0,0,0.7),
-              0 3px 4px rgba(0,0,0,0.7);
 	width: 100%;
 }
 
+.track-component, canvas {
+	border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  box-shadow: 0 -2px 4px rgba(0,0,0,0.7),
+              0 3px 4px rgba(0,0,0,0.7);
+}
+
+.track-component {
+	margin-top: 1rem;
+}
+
 .tracks {
-  height: 40vh;
+	border-top: 1px solid black;
+	box-shadow: 0 0px 1px rgba(0,0,0,0.7);
+	height: 40vh;
+}
+
+.track-meter {
+	padding: .75rem .8rem;
 }

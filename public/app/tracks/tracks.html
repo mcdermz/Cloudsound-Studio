@@ -1,5 +1,7 @@
 <div class="wrapper">
-  <canvas class="visualizer" id="{{$ctrl.trackName}}" height="75"></canvas>
+  <div class="track-meter columns">
+    <canvas class="visualizer" id="{{$ctrl.trackName}}" height="75"></canvas>
+  </div>
   <div class="tracks columns">
     <div class="column is-one-quarter">
       <faders fader="$ctrl.fader" track-name="{{$ctrl.trackName}}"></faders>
