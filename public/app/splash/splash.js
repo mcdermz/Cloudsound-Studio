@@ -11,7 +11,7 @@
     const vm = this
 
     socket.on('welcome', function(msg) {
-      console.log(msg);
+      console.log(msg)
     })
 
     vm.$onInit = function() {

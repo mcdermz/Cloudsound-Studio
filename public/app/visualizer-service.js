@@ -6,6 +6,7 @@
 
   function service() {
     this.visualizeTrack = function(track) {
+      // requires track.trackName and track.analyser
       visualize(track)
     }
 
@@ -31,7 +32,7 @@
     const canvas = document.querySelector('#'+ track.trackName)
     const ctx = canvasInit(canvas)
     const analyser = track.analyser
-    analyser.fftSize = 256;
+          analyser.fftSize = 256;
     let bufferLength = analyser.frequencyBinCount;
     const dataArray = new Uint8Array(bufferLength);
     let drawVisual

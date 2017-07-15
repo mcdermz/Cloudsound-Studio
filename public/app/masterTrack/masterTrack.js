@@ -28,7 +28,5 @@
     vm.sendStopMessage = function (){
       socket.emit('stop track', roomName)
     }
-
-
   }
 })()

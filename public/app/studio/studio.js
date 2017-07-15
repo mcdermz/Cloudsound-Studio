@@ -12,7 +12,6 @@
     vm.$onInit = function(){
       const roomName = $state.params.room
       vm.createRoom(roomName)
-      
     }
 
     vm.createRoom = function(name){

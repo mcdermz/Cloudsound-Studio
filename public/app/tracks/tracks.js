@@ -15,7 +15,6 @@
     const ctx = audioService.ctx
     const gainNode = ctx.createGain()
           gainNode.gain.value = 0.5
-
     const url = '/audio/tone-samples.mp3'
     const track = { gainNode, url }
 
@@ -52,9 +51,9 @@
     }
 
     const play = function (){
-      audioService.getData(track);
-      track.source.start(0);
-      gainNode.gain.value = vm.fader
+      audioService.getData(track)
+      track.source.start(0)
+      gainNode.gain.value = vm.fader/100
     }
 
     const stop = function (){

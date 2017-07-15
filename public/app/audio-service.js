@@ -1,5 +1,5 @@
 (function (){
-  'use strict';
+  'use strict'
 
   angular.module('app')
   .service('audioService', service)
@@ -11,8 +11,7 @@
 
     this.ctx = new AudioContext()
     this.masterGain = this.ctx.createGain()
-    this.masterGain.gain.value = 0.5
-
+    this.masterGain.gain.value = 0
 
     this.getData = async function(track) {
       const urlPkg = {
@@ -21,26 +20,34 @@
         responseType: 'arraybuffer'
       }
       track.source = this.ctx.createBufferSource()
-      track.analyser = this.ctx.createAnalyser();
-      track.analyser.minDecibels = -90;
-      track.analyser.maxDecibels = -10;
-      track.analyser.smoothingTimeConstant = 0.85;
+      track.analyser = this.ctx.createAnalyser()
+      analyserConfig(track)
 
       try {
         let audioData = await $http(urlPkg)
         let buffer = await this.ctx.decodeAudioData(audioData.data)
-
         track.source.buffer = buffer
-        track.source.connect(track.gainNode)
-        track.gainNode.connect(track.analyser)
-        track.analyser.connect(this.masterGain)
-        track.source.loop = true;
+        track.source.loop = true
+
+        chainTrackFX(track).connect(this.masterGain)
 
         visualizerService.visualizeTrack(track)
       }
       catch (error) {
         console.error(error);
       }
+    }
+
+    const analyserConfig = function(track) {
+      track.analyser.minDecibels = -90
+      track.analyser.maxDecibels = -10
+      track.analyser.smoothingTimeConstant = 0.85
+    }
+    
+    const chainTrackFX = function(track) {
+      track.source.connect(track.gainNode)
+      track.gainNode.connect(track.analyser)
+      return track.analyser
     }
   }
 })()
