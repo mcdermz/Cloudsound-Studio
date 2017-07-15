@@ -19,8 +19,8 @@
 
     const data = { room }
 
-    socket.on('play status', function(msg) {
-      vm.playing = msg.playing
+    socket.on('play status', function(isPlaying) {
+      vm.isPlaying = isPlaying
     })
 
     vm.faderChange = function() {
@@ -28,12 +28,12 @@
     }
 
     vm.sendPlayMessage = function() {
-      data.playing = true
+      data.isPlaying = true
       socket.emit('play track', data)
     }
 
     vm.sendStopMessage = function() {
-      data.playing = false
+      data.isPlaying = false
       socket.emit('stop track', data)
     }
   }

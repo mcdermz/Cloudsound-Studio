@@ -16,12 +16,12 @@ io.on('connection', function (socket) {
 
   socket.on('play track', function(data){
     io.to(data.room).emit('play track', 'Server: all tracks are playing!')
-    io.to(data.room).emit('play status', data)
+    io.to(data.room).emit('play status', data.isPlaying)
   })
 
   socket.on('stop track', function(data){
     io.to(data.room).emit('stop track', 'Server: all tracks are stopped!')
-    io.to(data.room).emit('play status', data)
+    io.to(data.room).emit('play status', data.isPlaying)
   })
 
   socket.on('send fader level', function(data){
