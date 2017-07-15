@@ -22,7 +22,7 @@
     vm.sendChat = function(){
 
       if (vm.msg && vm.msg.trim() !== ''){
-        const msg = vm.msg
+        const msg = vm.msg.trim()
         socket.emit('sent-message', {room: roomName, msg})
         vm.msg = ''
       }
