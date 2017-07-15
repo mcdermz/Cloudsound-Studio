@@ -19,8 +19,8 @@
     const canvasCtx = canvas.getContext("2d")
     const intendedWidth = document.querySelector('.wrapper').clientWidth;
     canvas.setAttribute('width',intendedWidth)
-    const WIDTH = canvas.width
-    const HEIGHT = canvas.height
+    let WIDTH = canvas.width
+    let HEIGHT = canvas.height
     canvasCtx.clearRect(0, 0, WIDTH, HEIGHT)
     canvasCtx.fillStyle = 'rgb(0, 0, 0)';
     canvasCtx.fillRect(0, 0, WIDTH, HEIGHT);
