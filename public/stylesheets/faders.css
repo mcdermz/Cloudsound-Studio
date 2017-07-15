@@ -1,5 +1,14 @@
-
-.track-fader {
+.track-fader-slider {
   -webkit-transform: rotate(-90deg);
   -webkit-transform-origin: top;
+  position: absolute;
+}
+
+.fader-wrapper {
+  padding-top: 1rem;
+  padding-left: 1rem;
+}
+
+.tile.track-fader {
+  postion: absolute;
 }
