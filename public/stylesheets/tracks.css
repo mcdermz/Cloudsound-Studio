@@ -12,11 +12,6 @@ canvas {
               0 3px 4px rgba(0,0,0,0.7);
 }
 
-.track-fader {
-  -webkit-transform: rotate(-90deg);
-  -webkit-transform-origin: top;
-}
-
 .tracks {
   height: 10rem;
 }

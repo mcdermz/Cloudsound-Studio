@@ -13,9 +13,7 @@
 
   function controller(socket, $state){
     const vm = this
-    vm.$onInit = function() {
-      console.log(vm.trackName);
-    }
+
     vm.faderChange = function() {
       const data = {
         room: $state.params.room,
