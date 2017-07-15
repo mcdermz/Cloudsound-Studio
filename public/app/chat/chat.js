@@ -20,9 +20,12 @@
     }
 
     vm.sendChat = function(){
-      const msg = vm.msg
-      socket.emit('sent-message', {room: roomName, msg})
-      vm.msg = ''
+
+      if (vm.msg && vm.msg.trim() !== ''){
+        const msg = vm.msg
+        socket.emit('sent-message', {room: roomName, msg})
+        vm.msg = ''
+      }
     }
 
     socket.on('received-message', function(received){
