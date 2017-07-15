@@ -41,15 +41,6 @@
       }
     })
 
-    vm.faderChange = function() {
-      const data = {
-        room: $state.params.room,
-        track: vm.trackName,
-        level: vm.fader
-      }
-      socket.emit('send fader level', data)
-    }
-
     const play = function (){
       audioService.getData(track)
       track.source.start(0)
