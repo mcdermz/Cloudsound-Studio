@@ -1,6 +1,7 @@
 .wrapper {
 	height: 100%;
 	max-width: 400px;
+	min-height: 430px;
 	margin: 0 auto;
 }
 
@@ -8,21 +9,27 @@ canvas {
 	width: 100%;
 }
 
-.track-component, canvas {
+.track-component, .track-container, canvas {
 	border-top: 1px solid black;
   border-bottom: 1px solid black;
   box-shadow: 0 -2px 4px rgba(0,0,0,0.7),
               0 3px 4px rgba(0,0,0,0.7);
 }
 
+.track-fx {
+	overflow: scroll;
+}
+
 .track-component {
+	overflow: hidden;
 	margin-top: 1rem;
 }
 
 .tracks {
+	overflow: visible;
 	border-top: 1px solid black;
-	box-shadow: 0 0px 1px rgba(0,0,0,0.7);
-	height: 40vh;
+	/*box-shadow: 0 0px 1px rgba(0,0,0,0.7);*/
+	height: auto;
 }
 
 .track-meter {
