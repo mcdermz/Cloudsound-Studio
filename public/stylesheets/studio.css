@@ -4,7 +4,7 @@
 }
 
 .track-container {
-  /*border: 3px solid white;*/
+  overflow: scroll;
 }
 
 .master-component {

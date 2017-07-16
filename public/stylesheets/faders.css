@@ -12,7 +12,7 @@
 }
 
 .tile.track-fader {
-  postion: absolute;
+  position: relative;
 }
 
 /* fader style */
