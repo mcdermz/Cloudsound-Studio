@@ -5,7 +5,8 @@
       templateUrl: './app/tracks/faders/faders.html',
       bindings: {
         trackName: '@',
-        fader: '='
+        fader: '=',
+        gainNode: '='
       },
     })
 
@@ -20,6 +21,7 @@
         track: vm.trackName,
         level: vm.fader
       }
+      vm.gainNode.gain.value = vm.fader/100
       socket.emit('send fader level', data)
     }
   }

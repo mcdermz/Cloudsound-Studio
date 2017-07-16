@@ -3,8 +3,34 @@
     <canvas class="visualizer" id="{{$ctrl.trackName}}" height="75"></canvas>
   </div>
   <div class="tracks columns">
-    <div class="column is-one-quarter">
-      <faders fader="$ctrl.fader" track-name="{{$ctrl.trackName}}"></faders>
+    <div class="column is-3">
+      <faders fader="$ctrl.fader" gain-node="$ctrl.gainNode" track-name="{{$ctrl.trackName}}"></faders>
+    </div>
+    <div class="column is-9">
+      <div class="tile is-ancestor">
+        <div class="tile is-parent is-vertical">
+          <div class="tile is-child">
+            <p class="title">Pan</p>
+
+          </div>
+          <div class="tile is-child">
+            <p class="title">Hi-pass</p>
+
+          </div>
+          <div class="tile is-child">
+            <p class="title">Lo-pass</p>
+
+          </div>
+          <div class="tile is-child">
+            <p class="title">Parametric</p>
+
+          </div>
+          <div class="tile is-child">
+            <p class="title">Reverb</p>
+
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

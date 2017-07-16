@@ -1,7 +1,9 @@
 .track-fader-slider {
-  -webkit-transform: rotate(-90deg);
-  -webkit-transform-origin: top;
-  position: absolute;
+
+}
+
+.track-fader-btn {
+  margin-bottom: 17rem;
 }
 
 .fader-wrapper {
@@ -11,4 +13,54 @@
 
 .tile.track-fader {
   postion: absolute;
+}
+
+/* fader style */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    input[type='range'] {
+      -webkit-transform: rotate(-90deg);
+      -webkit-transform-origin: left center;
+      position: absolute;
+      overflow: hidden;
+      width: 15rem;
+      border: solid rgba(0,0,0,0.3) 1px;
+      border-bottom: solid rgba(0,0,0,0.5) 1px;
+      border-left: solid rgba(0,0,0,0.5) 1px;
+      -webkit-appearance: none;
+      background-color: #222222;
+    }
+
+    input[type='range']::-webkit-slider-runnable-track {
+      height: 2rem;
+      -webkit-appearance: none;
+      color: #13bba4;
+      margin-top: -1px;
+    }
+
+    input[type='range']::-webkit-slider-thumb {
+      width: 1rem;
+      -webkit-appearance: none;
+      height: 2rem;
+      cursor: ew-resize;
+      background: #8b8b8b;
+      border: solid rgba(0,0,0,0.3) 1px;
+      border-bottom: solid rgba(0,0,0,0.5) 1px;
+      border-left: solid rgba(0,0,0,0.5) 1px;
+      box-shadow: -50rem 0 0 50rem #12a305;
+    }
+
+}
+/** FF*/
+input[type="range"]::-moz-range-progress {
+  background-color: #12a305;
+}
+input[type="range"]::-moz-range-track {
+  background-color: #222222;
+}
+/* IE*/
+input[type="range"]::-ms-fill-lower {
+  background-color: #12a305;
+}
+input[type="range"]::-ms-fill-upper {
+  background-color: #222222;
 }

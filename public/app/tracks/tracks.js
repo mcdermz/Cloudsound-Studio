@@ -13,10 +13,10 @@
   function controller(socket, audioService, visualizerService, $state, $scope) {
     const vm = this
     const ctx = audioService.ctx
-    const gainNode = ctx.createGain()
-          gainNode.gain.value = 0.5
+    vm.gainNode = ctx.createGain()
+    vm.gainNode.gain.value = 0.5
     const url = '/audio/tone-samples.mp3'
-    const track = { gainNode, url }
+    const track = { gainNode: vm.gainNode, url }
 
     vm.$onInit = function() {
       const canvases = document.querySelectorAll('.visualizer')
@@ -36,7 +36,8 @@
 
     socket.on('receive fader level', function(msg){
       if (msg.track === vm.trackName){
-        gainNode.gain.value = msg.level/100
+        console.log('Server: ');
+        vm.gainNode.gain.value = msg.level/100
         vm.fader = msg.level
       }
     })
@@ -44,11 +45,11 @@
     const play = function (){
       audioService.getData(track)
       track.source.start(0)
-      gainNode.gain.value = vm.fader/100
+      vm.gainNode.gain.value = vm.fader/100
     }
 
     const stop = function (){
-      gainNode.gain.value = 0
+      vm.gainNode.gain.value = 0
       track.source.stop(ctx.currentTime + 0.1)
     }
   }

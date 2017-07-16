@@ -1,7 +1,7 @@
 <div class="fader-wrapper tile is-ancestor">
   <div class="tile is-2 is-vertical is-parent">
     <div class="tile is-child">
-      <button class="track-fader-btn" type="button" name="button">{{$ctrl.fader}}</button>
+      <button class="track-fader-btn button is-small" type="button" name="button">{{$ctrl.fader}}</button>
     </div>
     <div class="tile track-fader is-child">
       <input class="track-fader-slider" ng-model="$ctrl.fader" ng-change="$ctrl.faderChange()" type="range">

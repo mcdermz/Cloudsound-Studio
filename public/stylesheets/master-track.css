@@ -1,9 +1,6 @@
 input[type="range"].master-fader {
-  height: 1px;
-  width: 200px;
-  border: solid rgba(0,0,0,0.3) 1px;
-  border-bottom: solid rgba(0,0,0,0.5) 1px;
-  border-left: solid rgba(0,0,0,0.5) 1px;
+  height: 2rem;
+  width: 15rem;
   -webkit-transform: rotate(-90deg);
   -webkit-transform-origin: bottom right;
   margin: 50px;
