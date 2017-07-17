@@ -37,9 +37,6 @@
 
     vm.soloTrack = function() { socket.emit('solo track', data) }
 
-    socket.on('solo track', onSolo(vm))
-    socket.on('mute track', onMute(vm))
-
     const onSolo = function(vm) {
       return function(msg) {
         if (msg.track === vm.trackName) {
@@ -58,5 +55,7 @@
         }
       }
     }
+    socket.on('solo track', onSolo(vm))
+    socket.on('mute track', onMute(vm))
   }
 })()
