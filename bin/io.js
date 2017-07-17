@@ -10,22 +10,26 @@ io.on('connection', function (socket) {
     io.to(roomName).emit('room created', `${socket.id} has entered room: ${roomName}!`)
   });
 
-  socket.on('sent-message', function(data){
+  socket.on('sent-message', function(data) {
     io.to(data.room).emit('received-message', data.msg)
   })
 
-  socket.on('play track', function(data){
+  socket.on('play track', function(data) {
     io.to(data.room).emit('play track', 'Server: all tracks are playing!')
     io.to(data.room).emit('play status', data.isPlaying)
   })
 
-  socket.on('stop track', function(data){
+  socket.on('stop track', function(data) {
     io.to(data.room).emit('stop track', 'Server: all tracks are stopped!')
     io.to(data.room).emit('play status', data.isPlaying)
   })
 
-  socket.on('send fader level', function(data){
+  socket.on('send fader level', function(data) {
     socket.to(data.room).emit('receive fader level', data)
+  })
+
+  socket.on('solo track', function(data) {
+    io.to(data.room).emit('solo track', data.track)
   })
 })
 
