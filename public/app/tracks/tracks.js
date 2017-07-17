@@ -36,7 +36,7 @@
 
     socket.on('receive fader level', function(msg){
       if (msg.track === vm.trackName){
-        vm.gainNode.gain.value = msg.fader/100
+        vm.gainNode.gain.value = (vm.isMuted) ? 0 : msg.fader/100
         vm.fader = msg.fader
       }
     })
