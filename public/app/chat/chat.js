@@ -26,7 +26,6 @@
         const msg = vm.msg.trim()
         socket.emit('sent-message', {room: roomName, msg})
         vm.msg = ''
-
       }
     }
 

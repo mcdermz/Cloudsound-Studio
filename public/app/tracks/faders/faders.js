@@ -33,6 +33,7 @@
 
     vm.muteTrack = function(send=true) {
       data.sendMute = send
+      console.log(socket);
       socket.emit('send mute track', data)
     }
 
