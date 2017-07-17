@@ -22,7 +22,6 @@
         track: vm.trackName,
         level: vm.fader
       }
-
       vm.soloedTracks = studioService.soloedTracks
     }
 
@@ -51,15 +50,7 @@
 
     socket.on('mute track', function(msg) {
       if (msg.track === vm.trackName) {
-        if (studioService.soloedTracks === 0 ) {
-          vm.isMuted = !vm.isMuted
-        }
-        else if (!vm.isSoloed) {
-          vm.isMuted = true
-        }
-        else {
-          vm.isMuted = false
-        }
+        vm.isMuted = (studioService.soloedTracks === 0) ? !vm.isMuted : (!vm.isSoloed) ? true : false;
       }
     })
   }
