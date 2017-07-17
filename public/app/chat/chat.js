@@ -5,9 +5,9 @@
       templateUrl: './app/chat/chat.html',
     })
 
-  controller.$inject = ['socket', '$state', '$scope']
+  controller.$inject = ['socket', 'studioService', '$state', '$scope']
 
-  function controller(socket, $state, $scope) {
+  function controller(socket, studioService, $state, $scope) {
     const vm = this
     const roomName = $state.params.room
 
@@ -38,7 +38,8 @@
     })
 
     socket.on('room created', function(msg) {
-      vm.chatMessages.push({message: msg})
+      studioService.socketId = msg.id
+      vm.chatMessages.push({message: `${msg.id} has entered room: ${msg.room}!`})
     })
   }
 })()

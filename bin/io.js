@@ -5,9 +5,10 @@ var io = require('socket.io')();
 io.on('connection', function (socket) {
   socket.emit('welcome', 'enter a ROOM NAM to get started');
 
-  socket.on('create room', function (roomName) {
-    socket.join(roomName)
-    io.to(roomName).emit('room created', `${socket.id} has entered room: ${roomName}!`)
+  socket.on('create room', function (room) {
+    socket.join(room)
+    let data = { room, id: socket.id}
+    io.to(room).emit('room created', data)
   });
 
   socket.on('sent-message', function(data) {
