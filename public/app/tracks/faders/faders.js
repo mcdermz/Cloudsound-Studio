@@ -43,15 +43,8 @@
     socket.on('solo track', function(msg) {
       if (msg.track === vm.trackName) {
         vm.isSoloed = !vm.isSoloed;
-        if (vm.isSoloed) {
-          studioService.soloedTracks += 1
-        }
-        else {
-          studioService.soloedTracks -= 1
-        }
-        if (studioService.soloedTracks === 0){
-          vm.muteTrack(false)
-        }
+        studioService.soloedTracks += (vm.isSoloed) ? 1 : -1;
+        if (studioService.soloedTracks === 0) vm.muteTrack(false);
       }
       vm.muteTrack()
     })
