@@ -39,19 +39,26 @@
       socket.emit('solo track', data)
     }
 
-    socket.on('solo track', function(msg) {
-      if (msg.track === vm.trackName) {
-        vm.isSoloed = !vm.isSoloed;
-        studioService.soloedTracks += (vm.isSoloed) ? 1 : -1;
-        if (studioService.soloedTracks === 0) vm.muteTrack(false);
+    const onSolo = function(vm) {
+      return function(msg) {
+        if (msg.track === vm.trackName) {
+          vm.isSoloed = !vm.isSoloed;
+          studioService.soloedTracks += (vm.isSoloed) ? 1 : -1;
+          if (studioService.soloedTracks === 0) vm.muteTrack(false);
+        }
+        vm.muteTrack()
       }
-      vm.muteTrack()
-    })
+    }
 
-    socket.on('mute track', function(msg) {
-      if (msg.track === vm.trackName) {
-        vm.isMuted = (studioService.soloedTracks === 0) ? !vm.isMuted : (!vm.isSoloed) ? true : false;
+    const onMute = function(vm) {
+      return function(msg) {
+        if (msg.track === vm.trackName) {
+          vm.isMuted = (studioService.soloedTracks === 0) ? !vm.isMuted : (!vm.isSoloed) ? true : false;
+        }
       }
-    })
+    }
+
+    socket.on('solo track', onSolo(vm))
+    socket.on('mute track', onMute(vm))
   }
 })()
