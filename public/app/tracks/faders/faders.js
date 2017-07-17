@@ -54,12 +54,7 @@
         if (msg.track === vm.trackName) {
           vm.isMuted = (studioService.soloedTracks === 0) ? !vm.isMuted : (!vm.isSoloed) ? true : false;
         }
-        if (vm.isMuted) {
-          vm.gainNode.gain.value = 0
-        }
-        else {
-          vm.gainNode.gain.value = vm.fader/100
-        }
+        vm.gainNode.gain.value = (vm.isMuted) ? 0 : vm.fader/100
       }
     }
     socket.on('receive solo track', onSolo(vm))
