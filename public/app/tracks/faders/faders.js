@@ -10,9 +10,9 @@
       },
     })
 
-  controller.$inject = ['socket', '$state']
+  controller.$inject = ['socket', 'studioService', '$state']
 
-  function controller(socket, $state){
+  function controller(socket, studioService, $state){
     const vm = this
     let data = {}
 
@@ -22,11 +22,12 @@
         track: vm.trackName,
         level: vm.fader
       }
+
+      vm.soloedTracks = studioService.soloedTracks
     }
 
     vm.faderChange = function() {
-
-      if (!vm.muted) vm.gainNode.gain.value = vm.fader/100
+      if (!vm.isMuted) vm.gainNode.gain.value = vm.fader/100
       socket.emit('send fader level', data)
     }
 
@@ -35,21 +36,34 @@
     }
 
     vm.soloTrack = function() {
+      data.isSoloed = vm.trackName
       socket.emit('solo track', data)
     }
 
     socket.on('solo track', function(msg) {
-      if (msg !== vm.trackName) {
-        if (!vm.soloed) {
-          vm.muted = true
+      if (msg.track === vm.trackName) {
+        vm.isSoloed = !vm.isSoloed;
+        if (vm.isSoloed) {
+          studioService.soloedTracks += 1
+        }
+        else {
+          studioService.soloedTracks -= 1
         }
       }
-      else if (!vm.soloed){
-        vm.soloed = true
-        vm.muted = false
-      }
-      else {
-        vm.soloed = false
+      vm.muteTrack()
+    })
+
+    socket.on('mute track', function(msg) {
+      if (msg.track === vm.trackName) {
+        if (studioService.soloedTracks === 0) {
+          vm.isMuted = !vm.isMuted
+        }
+        else if (!vm.isSoloed) {
+          vm.isMuted = true
+        }
+        else {
+          vm.isMuted = false
+        }
       }
     })
   }

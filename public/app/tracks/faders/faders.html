@@ -4,8 +4,8 @@
       <div class="columns">
         <div class="column">
           <button class="track-fader-btn button is-btn is-black" type="button" name="button"><strong>{{$ctrl.fader}}</strong></button>
-          <button class="mute-btn button is-small is-dark" ng-class="{'is-light': !$ctrl.muted, 'is-danger': $ctrl.muted}" ng-click="$ctrl.muteTrack()" type="button" name="button">MUTE</button>
-          <button class="solo-btn button is-small" ng-class="{'is-dark': !$ctrl.soloed, 'is-warning': $ctrl.soloed}" ng-click="$ctrl.soloTrack()" type="button" name="button">SOLO</button>
+          <button class="mute-btn button is-small is-dark" ng-class="{'is-light': !$ctrl.isMuted, 'is-danger': $ctrl.isMuted}" ng-click="$ctrl.muteTrack()" type="button" name="button">MUTE</button>
+          <button class="solo-btn button is-small" ng-class="{'is-dark': !$ctrl.isSoloed, 'is-warning': $ctrl.isSoloed}" ng-click="$ctrl.soloTrack()" type="button" name="button">SOLO</button>
         </div>
       </div>
     </div>

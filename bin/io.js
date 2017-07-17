@@ -29,7 +29,11 @@ io.on('connection', function (socket) {
   })
 
   socket.on('solo track', function(data) {
-    io.to(data.room).emit('solo track', data.track)
+    io.to(data.room).emit('solo track', data)
+  })
+
+  socket.on('mute track', function(data) {
+    io.to(data.room).emit('mute track', data)
   })
 })
 
