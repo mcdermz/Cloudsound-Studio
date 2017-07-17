@@ -4,7 +4,8 @@
       controller: controller,
       templateUrl: './app/tracks/tracks.html',
       bindings: {
-        trackName: '@'
+        trackName: '@',
+        srcAudioUrl: '@'
       },
     })
 
@@ -15,7 +16,7 @@
     const ctx = audioService.ctx
     vm.gainNode = ctx.createGain()
     vm.gainNode.gain.value = 0.5
-    const url = '/audio/tone-samples.mp3'
+    let url
     const track = { gainNode: vm.gainNode, url }
 
     vm.$onInit = function() {
@@ -24,6 +25,7 @@
         visualizerService.canvasInit(canvas)
       })
       track.trackName = vm.trackName
+      track.url = vm.srcAudioUrl
     }
 
     socket.on('play track', function(msg){
