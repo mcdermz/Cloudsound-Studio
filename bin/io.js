@@ -28,12 +28,12 @@ io.on('connection', function (socket) {
     socket.to(data.room).emit('receive fader level', data)
   })
 
-  socket.on('solo track', function(data) {
-    io.to(data.room).emit('solo track', data)
+  socket.on('send solo track', function(data) {
+    socket.to(data.room).emit('receive solo track', data)
   })
 
-  socket.on('mute track', function(data) {
-    io.to(data.room).emit('mute track', data)
+  socket.on('send mute track', function(data) {
+    socket.to(data.room).emit('receive mute track', data)
   })
 })
 

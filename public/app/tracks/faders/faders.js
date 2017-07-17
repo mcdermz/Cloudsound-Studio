@@ -26,23 +26,24 @@
     }
 
     vm.faderChange = function() {
-      if (!vm.isMuted) vm.gainNode.gain.value = vm.fader/100
+      data.level = vm.fader
+      vm.gainNode.gain.value = vm.fader/100
       socket.emit('send fader level', data)
     }
 
     vm.muteTrack = function(send=true) {
       data.sendMute = send
-      socket.emit('mute track', data)
+      socket.emit('send mute track', data)
     }
 
-    vm.soloTrack = function() { socket.emit('solo track', data) }
+    vm.soloTrack = function() { socket.emit('send solo track', data) }
 
     const onSolo = function(vm) {
       return function(msg) {
         if (msg.track === vm.trackName) {
           vm.isSoloed = !vm.isSoloed;
           studioService.soloedTracks += (vm.isSoloed) ? 1 : -1;
-          if (studioService.soloedTracks === 0) vm.muteTrack(false);
+          if (studioService.soloedTracks === 0) vm.muteTrack(false)
         }
         vm.muteTrack()
       }
@@ -55,7 +56,7 @@
         }
       }
     }
-    socket.on('solo track', onSolo(vm))
-    socket.on('mute track', onMute(vm))
+    socket.on('receive solo track', onSolo(vm))
+    socket.on('receive mute track', onMute(vm))
   }
 })()
