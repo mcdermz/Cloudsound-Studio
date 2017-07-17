@@ -20,13 +20,12 @@
       data = {
         room: $state.params.room,
         track: vm.trackName,
-        level: vm.fader
       }
       vm.soloedTracks = studioService.soloedTracks
     }
 
     vm.faderChange = function() {
-      data.level = vm.fader
+      data.fader = vm.fader
       vm.gainNode.gain.value = vm.fader/100
       socket.emit('send fader level', data)
     }
