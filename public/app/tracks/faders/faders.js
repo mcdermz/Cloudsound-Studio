@@ -71,25 +71,9 @@
       }
     }
 
-    const onOccupy = function(vm) {
-      return function(msg) {
-        if (msg.track === vm.trackName && msg.parameter === 'fader'){
-          vm.isOccupied = true
-        }
-      }
-    }
-
-    const onUnoccupy = function(vm) {
-      return function(msg) {
-        if (msg.track === vm.trackName && msg.parameter === 'fader'){
-          vm.isOccupied = false
-        }
-      }
-    }
-
     socket.on('receive solo track', onSolo(vm))
     socket.on('receive mute track', onMute(vm))
-    socket.on('occupy parameter', onOccupy(vm))
-    socket.on('unoccupy parameter', onUnoccupy(vm))
+    socket.on('occupy parameter', studioService.onOccupy(vm, 'fader', true))
+    socket.on('unoccupy parameter', studioService.onOccupy(vm, 'fader', false))
   }
 })()
