@@ -31,12 +31,12 @@
       socket.emit('send fader level', data)
     }
 
-    vm.muteTrack = function() {
+    vm.muteTrack = function(send=true) {
+      data.sendMute = send
       socket.emit('mute track', data)
     }
 
     vm.soloTrack = function() {
-      data.isSoloed = vm.trackName
       socket.emit('solo track', data)
     }
 
@@ -49,13 +49,16 @@
         else {
           studioService.soloedTracks -= 1
         }
+        if (studioService.soloedTracks === 0){
+          vm.muteTrack(false)
+        }
       }
       vm.muteTrack()
     })
 
     socket.on('mute track', function(msg) {
       if (msg.track === vm.trackName) {
-        if (studioService.soloedTracks === 0) {
+        if (studioService.soloedTracks === 0 ) {
           vm.isMuted = !vm.isMuted
         }
         else if (!vm.isSoloed) {
