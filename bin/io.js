@@ -51,6 +51,14 @@ io.on('connection', function (socket) {
       io.to(data.room).emit('receive mute track', data)
     }
   })
+
+  socket.on('parameter is occupied', function(data) {
+    socket.to(data.room).emit('occupy parameter', data)
+  })
+
+  socket.on('parameter is unoccupied', function(data) {
+    socket.to(data.room).emit('unoccupy parameter', data)
+  })
 })
 
 module.exports = io;

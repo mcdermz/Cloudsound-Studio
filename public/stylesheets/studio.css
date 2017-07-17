@@ -6,3 +6,8 @@
 .master-component {
   /*border: 1px solid lightblue;*/
 }
+
+.parameter-occupied {
+  outline: -webkit-focus-ring-color auto 5px;
+  outline-color: red;
+}
