@@ -3,6 +3,11 @@ var io = require('socket.io')();
 
 // every time a socket connection is made, this function is called
 io.on('connection', function (socket) {
+
+  let clientsCount = function(room) {
+    return io.of(room).server.eio.clientsCount
+  }
+
   socket.emit('welcome', 'enter a ROOM NAM to get started');
 
   socket.on('create room', function (room) {
@@ -30,11 +35,21 @@ io.on('connection', function (socket) {
   })
 
   socket.on('send solo track', function(data) {
-    socket.to(data.room).emit('receive solo track', data)
+    if (clientsCount(data.room) > 1) {
+      socket.to(data.room).emit('receive solo track', data)
+    }
+    else {
+      io.to(data.room).emit('receive solo track', data)
+    }
   })
 
   socket.on('send mute track', function(data) {
-    socket.to(data.room).emit('receive mute track', data)
+    if (clientsCount(data.room) > 1) {
+      socket.to(data.room).emit('receive mute track', data)
+    }
+    else {
+      io.to(data.room).emit('receive mute track', data)
+    }
   })
 })
 
