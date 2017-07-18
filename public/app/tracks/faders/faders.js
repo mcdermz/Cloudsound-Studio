@@ -7,16 +7,16 @@
         trackName: '@',
         fader: '=',
         gainNode: '=',
-        isMuted: '=',
-        isMutedBySolo: '=',
       },
     })
 
-  controller.$inject = ['socket', 'studioService', '$state']
+  controller.$inject = ['socket', 'studioService', 'trackService', '$state']
 
-  function controller(socket, studioService, $state){
+  function controller(socket, studioService, trackService, $state){
     const vm = this
     let data = {}
+    vm.isMuted = trackService.isMuted
+    vm.isMutedBySolo = trackService.isMutedBySolo
 
     vm.$onInit = function() {
       data = {
@@ -86,6 +86,7 @@
       return function(msg) {
         vm.isSoloed = false
         vm.isMutedBySolo = false
+        studioService.soloedTracks = 0
         vm.gainNode.gain.value = (vm.isMuted) ? 0 : vm.fader/100
       }
     }

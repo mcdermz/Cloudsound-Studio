@@ -9,9 +9,9 @@
       },
     })
 
-  controller.$inject = ['socket', 'audioService', 'visualizerService', '$state', '$scope']
+  controller.$inject = ['socket', 'audioService', 'visualizerService', 'trackService', '$state', '$scope']
 
-  function controller(socket, audioService, visualizerService, $state, $scope) {
+  function controller(socket, audioService, visualizerService, trackService, $state, $scope) {
     const vm = this
     const ctx = audioService.ctx
     vm.gainNode = ctx.createGain()
@@ -38,7 +38,7 @@
 
     socket.on('receive fader level', function(msg){
       if (msg.track === vm.trackName){
-        vm.gainNode.gain.value = (vm.isMuted) ? 0 : msg.fader/100
+        vm.gainNode.gain.value = (trackService.isMuted) ? 0 : msg.fader/100
         vm.fader = msg.fader
       }
     })
@@ -46,7 +46,7 @@
     const play = function (){
       audioService.getData(track)
       track.source.start(0)
-      vm.gainNode.gain.value = (vm.isMuted || vm.isMutedBySolo) ? 0 : vm.fader/100
+      vm.gainNode.gain.value = (trackService.isMuted || trackService.isMutedBySolo) ? 0 : vm.fader/100
     }
 
     const stop = function (){
