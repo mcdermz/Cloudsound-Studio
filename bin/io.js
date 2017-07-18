@@ -52,6 +52,15 @@ io.on('connection', function (socket) {
     }
   })
 
+  socket.on('send mute by solo', function(data) {
+    if (clientsCount(data.room) > 1) {
+      socket.to(data.room).emit('receive mute by solo', data)
+    }
+    else {
+      io.to(data.room).emit('receive mute by solo', data)
+    }
+  })
+
   socket.on('parameter is occupied', function(data) {
     socket.to(data.room).emit('occupy parameter', data)
   })
