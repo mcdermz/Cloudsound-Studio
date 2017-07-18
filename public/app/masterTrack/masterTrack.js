@@ -36,5 +36,9 @@
       data.isPlaying = false
       socket.emit('stop track', data)
     }
+
+    vm.clearSolo = function() {
+      socket.emit('clear solo', data)
+    }
   }
 })()

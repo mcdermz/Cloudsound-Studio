@@ -61,6 +61,10 @@ io.on('connection', function (socket) {
     }
   })
 
+  socket.on('clear solo', function(data) {
+    io.to(data.room).emit('clear solo', data)
+  })
+
   socket.on('parameter is occupied', function(data) {
     socket.to(data.room).emit('occupy parameter', data)
   })

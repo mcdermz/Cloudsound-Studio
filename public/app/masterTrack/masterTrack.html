@@ -1,4 +1,22 @@
-<button ng-disabled="$ctrl.isPlaying" ng-click="$ctrl.sendPlayMessage()" class="button is-large" type="button" name="button">Play</button>
-<button ng-click="$ctrl.sendStopMessage()" class="button is-large" type="button" name="button">Stop</button>
-<input ng-model="$ctrl.fader" ng-change="$ctrl.faderChange()" class="master-fader" type="range">
+<button
+  ng-disabled="$ctrl.isPlaying"
+  ng-click="$ctrl.sendPlayMessage()"
+  class="button is-large is-success"
+  type="button"
+  name="button">Play</button>
+<button
+  ng-click="$ctrl.sendStopMessage()"
+  class="button is-large is-danger"
+  type="button"
+  name="button">Stop</button>
+<button
+  ng-click="$ctrl.clearSolo()"
+  class="button is-large is-warning"
+  type="button"
+  name="button">Solo Clear</button>
+<input
+  ng-model="$ctrl.fader"
+  ng-change="$ctrl.faderChange()"
+  class="master-fader"
+  type="range">
 <button type="button" name="button">{{$ctrl.fader}}</button>

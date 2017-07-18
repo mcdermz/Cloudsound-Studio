@@ -82,9 +82,18 @@
       }
     }
 
+    const clearSolo = function(vm) {
+      return function(msg) {
+        vm.isSoloed = false
+        vm.isMutedBySolo = false
+        vm.gainNode.gain.value = (vm.isMuted) ? 0 : vm.fader/100
+      }
+    }
+
     socket.on('receive solo track', onSolo(vm))
     socket.on('receive mute track', onMute(vm))
     socket.on('receive mute by solo', onMuteBySolo(vm))
+    socket.on('clear solo', clearSolo(vm))
     socket.on('occupy parameter', studioService.onOccupy(vm, 'fader', true))
     socket.on('unoccupy parameter', studioService.onOccupy(vm, 'fader', false))
   }
