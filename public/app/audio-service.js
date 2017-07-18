@@ -27,10 +27,12 @@
         let buffer = await this.ctx.decodeAudioData(audioData.data)
         track.source.buffer = buffer
         track.source.loop = true
-        track.source.loopEnd = buffer.duration / 2.195 // for gapless looping
+
+        track.source.loopEnd = buffer.duration/2.020 // for gapless looping
 
         chainTrackFX(track).connect(this.masterGain)
         visualizerService.visualizeTrack(track)
+        track.source.start()
       }
       catch (error) {
         console.error(error);

@@ -45,7 +45,6 @@
 
     const play = function (){
       audioService.getData(track)
-      track.source.start(0)
       vm.gainNode.gain.value = (trackService.isMuted || trackService.isMutedBySolo) ? 0 : vm.fader/100
     }
 
