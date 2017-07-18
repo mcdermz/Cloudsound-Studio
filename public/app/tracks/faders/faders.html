@@ -6,7 +6,7 @@
           <button class="track-fader-btn button is-btn is-black" type="button" name="button"><strong>{{$ctrl.fader}}</strong></button>
           <button
           class="mute-btn button is-small is-dark"
-          ng-class="{'is-light': !$ctrl.isMuted, 'is-danger': $ctrl.isMuted}"
+          ng-class="{'is-light': !$ctrl.isMuted, 'is-danger': $ctrl.isMuted, 'muted-by-solo': !$ctrl.isMuted && $ctrl.isMutedBySolo}"
           ng-click="$ctrl.muteTrack()"
           type="button"
           name="button">

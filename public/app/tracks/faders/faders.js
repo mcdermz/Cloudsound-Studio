@@ -32,12 +32,11 @@
     }
 
     vm.muteTrack = function() {
-      data.socketId = studioService.socketId
+      onMute(vm)()
       socket.emit('send mute track', data)
     }
 
     vm.soloTrack = function() {
-      data.socketId = studioService.socketId
       socket.emit('send solo track', data)
     }
 
@@ -64,9 +63,7 @@
 
     const onMute = function(vm) {
       return function(msg) {
-        if (msg.track === vm.trackName) {
-          vm.isMuted = (studioService.soloedTracks === 0) ? !vm.isMuted : (!vm.isSoloed) ? true : false;
-        }
+        vm.isMuted = !vm.isMuted
         vm.gainNode.gain.value = (vm.isMuted) ? 0 : vm.fader/100
       }
     }
