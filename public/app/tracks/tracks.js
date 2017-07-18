@@ -45,8 +45,7 @@
 
     const play = function (){
       audioService.getData(track)
-      // track.source.start(0)
-      // track.source.loop = true
+      track.source.start(0)
       vm.gainNode.gain.value = vm.fader/100
     }
 
