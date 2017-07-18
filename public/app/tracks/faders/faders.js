@@ -7,7 +7,8 @@
         trackName: '@',
         fader: '=',
         gainNode: '=',
-        isMuted: '='
+        isMuted: '=',
+        isMutedBySolo: '=',
       },
     })
 
