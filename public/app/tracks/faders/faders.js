@@ -63,7 +63,7 @@
       return function(msg) {
         if (msg.track === vm.trackName) {
           vm.isMuted = !vm.isMuted
-          vm.gainNode.gain.value = (vm.isMuted) ? 0 : vm.fader/100
+          vm.gainNode.gain.value = (vm.isMutedBySolo || vm.isMuted) ? 0 : vm.fader/100
         }
       }
     }
@@ -76,6 +76,8 @@
         else {
           vm.isMutedBySolo = (studioService.soloedTracks > 0) ? (!vm.isSoloed) : false
         }
+
+        vm.gainNode.gain.value = (vm.isMutedBySolo || vm.isMuted) ? 0 : vm.fader/100
       }
     }
 
