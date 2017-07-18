@@ -30,7 +30,7 @@
         track.source.loop = true
 
         chainTrackFX(track).connect(this.masterGain)
-
+        track.source.loopEnd = buffer.duration / 2.195
         visualizerService.visualizeTrack(track)
       }
       catch (error) {
@@ -43,7 +43,7 @@
       track.analyser.maxDecibels = -10
       track.analyser.smoothingTimeConstant = 0.85
     }
-    
+
     const chainTrackFX = function(track) {
       track.source.connect(track.gainNode)
       track.gainNode.connect(track.analyser)
