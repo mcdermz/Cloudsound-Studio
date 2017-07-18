@@ -22,31 +22,19 @@
       track.source = this.ctx.createBufferSource()
       track.analyser = this.ctx.createAnalyser()
       analyserConfig(track)
-        // request.onload = function() {
-        //     context.decodeAudioData(request.response, function(response) {
-        //         source.buffer = response;
-        //         source.start(0);
-        //         source.loop = true;
-        //     }, function () { console.error('The request failed.'); } );
-        // }
-      var request = new XMLHttpRequest();
-      request.open('GET', track.url, true)
-      request.responseType = 'arraybuffer'
-      var ctx = this.ctx
-      var masterGain = this.masterGain
-      request.onload = function() {
-        ctx.decodeAudioData(request.response, function(response) {
-          track.source.buffer = response
-          chainTrackFX(track).connect(masterGain)
-          visualizerService.visualizeTrack(track)
-          track.source.loop = true
-          track.source.loopEnd = response.duration / 2.195
-          track.source.start()
-        }, function() {
-          console.error(error);
-        })
+      try {
+        let audioData = await $http(urlPkg)
+        let buffer = await this.ctx.decodeAudioData(audioData.data)
+        track.source.buffer = buffer
+        track.source.loop = true
+
+        chainTrackFX(track).connect(this.masterGain)
+        track.source.loopEnd = buffer.duration / 2.195
+        visualizerService.visualizeTrack(track)
       }
-      request.send()
+      catch (error) {
+        console.error(error);
+      }
     }
 
     const analyserConfig = function(track) {
