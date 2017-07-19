@@ -15,17 +15,8 @@
   function controller(socket, studioService, tracksService, $state){
     const vm = this
 
-    const setData = function() {
-      let data = {
-        room: $state.params.room,
-        trackName: vm.trackName,
-        isMuted: vm.isMuted || false,
-        isMutedBySolo: vm.isMutedBySolo || false,
-        isSoloed: vm.isSoloed || false,
-        fader: vm.fader,
-        soloedTracks: studioService.soloedTracks
-      }
-      return data
+    let setData = function() {
+      return tracksService.setTrackData(vm)
     }
 
     const getData = function(data) {
