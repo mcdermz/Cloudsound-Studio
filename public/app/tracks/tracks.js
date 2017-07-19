@@ -29,37 +29,35 @@
       track.url = vm.srcAudioUrl
     }
 
-    socket.on('play track', function(msg){
-      play()
-    })
-
-    socket.on('stop track', function(msg){
-      stop()
-    })
-
-    socket.on('receive fader level', function(msg){
-      if (msg.trackName === vm.trackName){
-        getData(msg)
-      }
-    })
 
     const getData = function(data) {
-      vm.trackName = data.trackName
-      vm.isMuted = data.isMuted
-      vm.isMutedBySolo = (data.isMutedBySolo && !data.isSoloed)
-      vm.isSoloed = data.isSoloed
-      vm.fader = data.fader
-      vm.gainNode.gain.value = (data.isMuted || data.isMutedBySolo) ? 0 : data.fader/100
+      tracksService.getTrackData(vm, data)
     }
 
     const play = function (){
-      audioService.getData(track)
-      track.source.start()
+      return function() {
+        audioService.getData(track)
+        track.source.start()
+      }
     }
 
     const stop = function (){
-      vm.gainNode.gain.value = 0
-      track.source.stop(ctx.currentTime + 0.1)
+      return function() {
+        vm.gainNode.gain.value = 0
+        track.source.stop(ctx.currentTime + 0.1)
+      }
     }
+
+    const receiveFaderLevel = function() {
+      return function(msg){
+        if (msg.trackName === vm.trackName){
+          getData(msg)
+        }
+      }
+    }
+
+    socket.on('play track', play())
+    socket.on('stop track', stop())
+    socket.on('receive fader level', receiveFaderLevel())
   }
 })()
