@@ -53,9 +53,10 @@
     }
 
     vm.soloTrack = function() {
+      studioService.soloedTracks += (!vm.isSoloed) ? 1 : -1
       const data = setData()
       data.isSoloed = (vm.isSoloed) ? false : true
-      data.soloedTracks += (data.isSoloed) ? 1 : -1
+      // data.soloedTracks += (data.isSoloed) ? 1 : -1
       socket.emit('send solo track', data)
     }
 
@@ -98,6 +99,7 @@
           vm.gainNode.gain.value = (vm.isMutedBySolo || vm.isMuted) ? 0 : vm.fader/100
         }
         else {
+          msg.isMutedBySolo = (!msg.isSoloed) ? (msg.soloedTracks > 0) : false
           getData(msg)
         }
       }
