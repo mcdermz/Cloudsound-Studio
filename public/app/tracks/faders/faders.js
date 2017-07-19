@@ -33,7 +33,6 @@
     }
 
     vm.muteTrack = function() {
-      const data = trackservice.data
       socket.emit('send mute track', data)
     }
 
@@ -63,7 +62,6 @@
 
     const onMute = function(vm) {
       return function(msg) {
-        tracksService.data = msg
         if (msg.track === vm.trackName) {
           vm.isMuted = !vm.isMuted
           vm.gainNode.gain.value = (vm.isMutedBySolo || vm.isMuted) ? 0 : vm.fader/100
