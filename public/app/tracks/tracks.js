@@ -9,9 +9,9 @@
       },
     })
 
-  controller.$inject = ['socket', 'audioService', 'visualizerService', 'tracksService', '$state', '$scope']
+  controller.$inject = ['socket', 'audioService', 'visualizerService', 'tracksService']
 
-  function controller(socket, audioService, visualizerService, tracksService, $state, $scope) {
+  function controller(socket, audioService, visualizerService, tracksService) {
     const vm = this
     const ctx = audioService.ctx
     vm.gainNode = ctx.createGain()
@@ -28,7 +28,6 @@
       track.trackName = vm.trackName
       track.url = vm.srcAudioUrl
     }
-
 
     const getData = function(data) {
       tracksService.getTrackData(vm, data)
