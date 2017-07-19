@@ -7,7 +7,7 @@
   function factory(socketFactory) {
     return socketFactory({
       prefix: '',
-      ioSocket: io.connect('/')
+      ioSocket: io.connect()
     });
   }
 })()

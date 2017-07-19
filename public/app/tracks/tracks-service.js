@@ -2,12 +2,12 @@
   'use strict'
 
   angular.module('app')
-  .service('trackService', service)
+  .service('tracksService', service)
 
   service.$inject = []
 
   function service(){
-    this.isMuted = false
-    this.isMutedBySolo = false
+    this.muteState = {}
+    // this.isMutedBySolo = false
   }
 })()

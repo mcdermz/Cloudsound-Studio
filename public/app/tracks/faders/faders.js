@@ -10,20 +10,20 @@
       },
     })
 
-  controller.$inject = ['socket', 'studioService', 'trackService', '$state']
+  controller.$inject = ['socket', 'studioService', 'tracksService', '$state']
 
-  function controller(socket, studioService, trackService, $state){
+  function controller(socket, studioService, tracksService, $state){
     const vm = this
     let data = {}
-    vm.isMuted = trackService.isMuted
-    vm.isMutedBySolo = trackService.isMutedBySolo
 
     vm.$onInit = function() {
+      vm.isMuted = tracksService.muteState.isMuted
       data = {
         room: $state.params.room,
         track: vm.trackName,
       }
-      vm.soloedTracks = studioService.soloedTracks
+      vm.isMutedBySolo = tracksService.muteState.isMutedBySolo
+      console.log(vm.isMuted);
     }
 
     vm.faderChange = function() {
@@ -33,6 +33,7 @@
     }
 
     vm.muteTrack = function() {
+      const data = trackservice.data
       socket.emit('send mute track', data)
     }
 
@@ -62,9 +63,11 @@
 
     const onMute = function(vm) {
       return function(msg) {
+        tracksService.data = msg
         if (msg.track === vm.trackName) {
           vm.isMuted = !vm.isMuted
           vm.gainNode.gain.value = (vm.isMutedBySolo || vm.isMuted) ? 0 : vm.fader/100
+          console.log(tracksService.muteState.isMuted);
         }
       }
     }
