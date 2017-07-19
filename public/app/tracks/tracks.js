@@ -15,6 +15,7 @@
     const vm = this
     const ctx = audioService.ctx
     vm.gainNode = ctx.createGain()
+    vm.gainNode.gain.value = 0.5
 
     let url
     const track = { gainNode: vm.gainNode, url }
@@ -53,7 +54,6 @@
 
     const play = function (){
       audioService.getData(track)
-      vm.gainNode.gain.value = (vm.isMuted || vm.isMutedBySolo) ? 0 : vm.fader/100
       track.source.start()
     }
 

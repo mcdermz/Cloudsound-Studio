@@ -27,7 +27,7 @@
     this.soloedTracks = 0
     this.onOccupy = function(controller, parameter, bool) {
       return function(msg) {
-        if (msg.track === controller.trackName && msg.parameter === parameter){
+        if (msg.trackName === controller.trackName && msg.parameter === parameter){
           controller.isOccupied = bool
         }
       }

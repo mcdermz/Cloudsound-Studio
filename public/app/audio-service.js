@@ -31,7 +31,6 @@
 
         chainTrackFX(track).connect(this.masterGain)
         visualizerService.visualizeTrack(track)
-        // track.source.start()
       }
       catch (error) {
         console.error(error);

@@ -56,7 +56,6 @@
       studioService.soloedTracks += (!vm.isSoloed) ? 1 : -1
       const data = setData()
       data.isSoloed = (vm.isSoloed) ? false : true
-      // data.soloedTracks += (data.isSoloed) ? 1 : -1
       socket.emit('send solo track', data)
     }
 
