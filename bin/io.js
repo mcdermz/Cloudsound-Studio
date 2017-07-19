@@ -35,30 +35,15 @@ io.on('connection', function (socket) {
   })
 
   socket.on('send solo track', function(data) {
-    if (clientsCount(data.room) > 1) {
-      socket.to(data.room).emit('receive solo track', data)
-    }
-    else {
-      io.to(data.room).emit('receive solo track', data)
-    }
+    io.to(data.room).emit('receive solo track', data)
   })
 
   socket.on('send mute track', function(data) {
-    if (clientsCount(data.room) > 1) {
-      socket.to(data.room).emit('receive mute track', data)
-    }
-    else {
-      io.to(data.room).emit('receive mute track', data)
-    }
+    io.to(data.room).emit('receive mute track', data)
   })
 
   socket.on('send mute by solo', function(data) {
-    if (clientsCount(data.room) > 1) {
-      socket.to(data.room).emit('receive mute by solo', data)
-    }
-    else {
-      io.to(data.room).emit('receive mute by solo', data)
-    }
+    io.to(data.room).emit('receive mute by solo', data)
   })
 
   socket.on('clear solo', function(data) {
