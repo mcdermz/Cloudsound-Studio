@@ -31,7 +31,7 @@ io.on('connection', function (socket) {
   })
 
   socket.on('send fader level', function(data) {
-    socket.to(data.room).emit('receive fader level', data)
+    io.to(data.room).emit('receive fader level', data)
   })
 
   socket.on('send solo track', function(data) {

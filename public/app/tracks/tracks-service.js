@@ -7,7 +7,6 @@
   service.$inject = []
 
   function service(){
-    this.muteState = {}
-    // this.isMutedBySolo = false
+
   }
 })()

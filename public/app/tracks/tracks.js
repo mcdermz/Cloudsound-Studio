@@ -15,11 +15,9 @@
     const vm = this
     const ctx = audioService.ctx
     vm.gainNode = ctx.createGain()
-    // vm.gainNode.gain.value = 0.5
+
     let url
     const track = { gainNode: vm.gainNode, url }
-    vm.isMuted = tracksService.isMuted
-    vm.isMutedBySolo = tracksService.isMutedBySolo
 
     vm.$onInit = function() {
       const canvases = document.querySelectorAll('.visualizer')
@@ -39,14 +37,21 @@
     })
 
     socket.on('receive fader level', function(msg){
-      if (msg.track === vm.trackName){
-        vm.gainNode.gain.value = (vm.isMuted) ? 0 : msg.fader/100
-        vm.fader = msg.fader
+      if (msg.trackName === vm.trackName){
+        getData(msg)
       }
     })
 
+    const getData = function(data) {
+      vm.trackName = data.trackName
+      vm.isMuted = data.isMuted
+      vm.isMutedBySolo = (data.isMutedBySolo && !data.isSoloed)
+      vm.isSoloed = data.isSoloed
+      vm.fader = data.fader
+      vm.gainNode.gain.value = (data.isMuted || data.isMutedBySolo) ? 0 : data.fader/100
+    }
+
     const play = function (){
-      console.log(tracksService.isMuted);
       audioService.getData(track)
       vm.gainNode.gain.value = (vm.isMuted || vm.isMutedBySolo) ? 0 : vm.fader/100
       track.source.start()
