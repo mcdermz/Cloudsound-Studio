@@ -5,14 +5,14 @@
       templateUrl: './app/tracks/faders/faders.html',
       bindings: {
         trackName: '@',
-        fader: '=',
+        fader: '<',
         gainNode: '=',
       },
     })
 
-  controller.$inject = ['socket', 'studioService', 'tracksService', '$state']
+  controller.$inject = ['socket', 'studioService', 'tracksService']
 
-  function controller(socket, studioService, tracksService, $state){
+  function controller(socket, studioService, tracksService){
     const vm = this
 
     const setData = function() {
