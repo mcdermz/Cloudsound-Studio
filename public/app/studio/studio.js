@@ -8,15 +8,12 @@
   controller.$inject = ['socket', 'visualizerService', 'studioService', '$state']
   function controller(socket, visualizerService, studioService, $state) {
     const vm = this
+    const room = $state.params.room
 
     vm.$onInit = function(){
-      const roomName = $state.params.room
-      vm.createRoom(roomName)
+      vm.createRoom(room)
       vm.trackNames4 = studioService.trackNames.slice(0, 4);
       vm.trackNames8 = studioService.trackNames.slice(4)
-
-      console.log('First four: ', vm.trackNames4);
-      console.log('Last four: ', vm.trackNames8);
     }
 
     vm.createRoom = function(name){
@@ -27,5 +24,18 @@
         console.log('enter a name!');
       }
     }
+
+    vm.eightTrackToggle = function() {
+      const is8Track = vm.is8Track || false
+      console.log(vm.is8Track);
+      const data = { room, is8Track }
+      socket.emit('8 track toggle', data)
+    }
+
+    socket.on('8 track toggle', function(msg) {
+      console.log(msg);
+      vm.is8Track = msg.is8Track
+      console.log(vm.is8Track);
+    })
   }
 })()

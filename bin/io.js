@@ -10,11 +10,15 @@ io.on('connection', function (socket) {
 
   socket.emit('welcome', 'enter a ROOM NAM to get started');
 
-  socket.on('create room', function (room) {
+  socket.on('create room', function(room) {
     socket.join(room)
     let data = { room, id: socket.id}
     io.to(room).emit('room created', data)
-  });
+  })
+
+  socket.on('8 track toggle', function(data) {
+    io.to(data.room).emit('8 track toggle', data)
+  })
 
   socket.on('sent-message', function(data) {
     io.to(data.room).emit('received-message', data.msg)
