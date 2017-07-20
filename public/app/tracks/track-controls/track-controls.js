@@ -1,6 +1,6 @@
 (function (){
   angular.module('app')
-    .component('track-controls', {
+    .component('trackControls', {
       controller: controller,
       templateUrl: './app/tracks/track-controls/track-controls.html',
       bindings: {

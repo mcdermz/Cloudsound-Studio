@@ -2,13 +2,9 @@
   <div class="track-meter columns">
     <canvas class="visualizer" id="{{$ctrl.trackName}}" height="75"></canvas>
   </div>
-  <div class="tracks columns is-mobile track-fx">
-    <div class="column">
-      <track-controls
-        fader="$ctrl.fader"
-        gain-node="$ctrl.gainNode"
-        track-name="{{$ctrl.trackName}}">
-      </track-controls>
-    </div>
-  </div>
+  <track-controls
+    fader="$ctrl.fader"
+    gain-node="$ctrl.gainNode"
+    track-name="{{$ctrl.trackName}}">
+  </track-controls>
 </div>

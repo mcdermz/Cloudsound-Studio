@@ -2,8 +2,8 @@
   color: #12a305;
 }
 
-.solo-btn {
-  margin-bottom: 14rem;
+.track-controls-container {
+  padding: 1rem;
 }
 
 .fader-wrapper {
@@ -11,8 +11,12 @@
   padding-left: 1rem;
 }
 
-.tile.track-fader {
+.track-fader {
   position: relative;
+}
+
+.mute-btn, .solo-btn {
+  margin: .2rem;
 }
 
 button.muted-by-solo {
@@ -29,11 +33,11 @@ button.muted-by-solo {
 /* fader style */
 @media screen and (-webkit-min-device-pixel-ratio:0) {
     input[type='range'] {
-      -webkit-transform: rotate(-90deg);
-      -webkit-transform-origin: left center;
-      position: absolute;
+      /*-webkit-transform: rotate(-90deg);
+      -webkit-transform-origin: left center;*/
+      position: relative;
       overflow: hidden;
-      width: 15rem;
+      width: 60%;
       border: solid rgba(0,0,0,0.3) 1px;
       border-bottom: solid rgba(0,0,0,0.5) 1px;
       border-left: solid rgba(0,0,0,0.5) 1px;
@@ -42,7 +46,7 @@ button.muted-by-solo {
     }
 
     input[type='range']::-webkit-slider-runnable-track {
-      height: 2rem;
+      height: 1rem;
       -webkit-appearance: none;
       color: #13bba4;
       margin-top: -1px;
@@ -51,7 +55,7 @@ button.muted-by-solo {
     input[type='range']::-webkit-slider-thumb {
       width: 1rem;
       -webkit-appearance: none;
-      height: 2rem;
+      height: 1rem;
       cursor: ew-resize;
       background: #8b8b8b;
       border: solid rgba(0,0,0,0.3) 1px;

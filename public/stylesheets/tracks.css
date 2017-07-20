@@ -1,7 +1,6 @@
 .wrapper {
-	height: 100%;
 	max-width: 400px;
-	min-height: 430px;
+	min-height: 85px;
 	margin: 0 auto;
 }
 
@@ -17,11 +16,12 @@ canvas {
 }
 
 .track-fx {
-	overflow: scroll;
+	overflow: visible;
+	height: auto;
 }
 
 .track-component {
-	overflow: hidden;
+	overflow: visible;
 	margin-top: 1rem;
 }
 
@@ -29,7 +29,7 @@ canvas {
 	overflow: visible;
 	border-top: 1px solid black;
 	/*box-shadow: 0 0px 1px rgba(0,0,0,0.7);*/
-	height: auto;
+	/*height: auto;*/
 }
 
 .track-meter {
