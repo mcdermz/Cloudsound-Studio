@@ -4,35 +4,11 @@
   </div>
   <div class="tracks columns is-mobile track-fx">
     <div class="column is-4">
-      <faders fader="$ctrl.fader"
+      <faders
+        fader="$ctrl.fader"
         gain-node="$ctrl.gainNode"
-        track-name="{{$ctrl.trackName}}"></faders>
-    </div>
-    <div class="column">
-      <div class="tile is-ancestor">
-        <div class="tile is-parent is-vertical">
-          <div class="tile is-child">
-            <p class="title">Pan</p>
-
-          </div>
-          <div class="tile is-child">
-            <p class="title">Hi-pass</p>
-
-          </div>
-          <div class="tile is-child">
-            <p class="title">Lo-pass</p>
-
-          </div>
-          <div class="tile is-child">
-            <p class="title">Parametric</p>
-
-          </div>
-          <div class="tile is-child">
-            <p class="title">Reverb</p>
-
-          </div>
-        </div>
-      </div>
+        track-name="{{$ctrl.trackName}}">
+      </faders>
     </div>
   </div>
 </div>

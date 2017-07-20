@@ -22,6 +22,22 @@
       {
         name: 'four',
         srcAudioUrl: 'https://s3-us-west-2.amazonaws.com/cloudsoundstudio/rhythm/drop-the-funk-lead-guitar.mp3'
+      },
+      {
+        name: 'five',
+        srcAudioUrl: 'https://s3-us-west-2.amazonaws.com/cloudsoundstudio/drums/80s-back-beat-01.mp3'
+      },
+      {
+        name: 'six',
+        srcAudioUrl: 'https://s3-us-west-2.amazonaws.com/cloudsoundstudio/bass/british-blues-bass.mp3'
+      },
+      {
+        name: 'seven',
+        srcAudioUrl: 'https://s3-us-west-2.amazonaws.com/cloudsoundstudio/rhythm/disco-delight-clav.mp3'
+      },
+      {
+        name: 'eight',
+        srcAudioUrl: 'https://s3-us-west-2.amazonaws.com/cloudsoundstudio/rhythm/drop-the-funk-lead-guitar.mp3'
       }
     ]
     this.soloedTracks = 0
