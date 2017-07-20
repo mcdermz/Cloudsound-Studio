@@ -15,7 +15,7 @@
           <tracks src-audio-url="https://s3-us-west-2.amazonaws.com/cloudsoundstudio/rhythm/drop-the-funk-lead-guitar.mp3" track-name="four"></tracks>
         </div>
       </div>
-      <div class="tile">
+      <div class="tile" ng-if="$ctrl.is8Track">
         <div class="track-component column is-one-quarter">
           <tracks src-audio-url="https://s3-us-west-2.amazonaws.com/cloudsoundstudio/ktb/70s-electric-piano-28.mp3" track-name="five"></tracks>
         </div>
@@ -33,7 +33,11 @@
   </div>
 
   <div class="chat-master-container columns ">
-    <div class="chat-component column is-one-quarter">
+    <label class="checkbox">
+      <input type="checkbox" ng-model="$ctrl.is8Track" name="" value="">
+      Toggle 8-Track Mode
+    </label>
+    <div class="chat-component column is-one-third">
       <chat></chat>
     </div>
 
