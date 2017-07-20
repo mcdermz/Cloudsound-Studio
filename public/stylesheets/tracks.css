@@ -17,20 +17,30 @@ canvas {
 }
 
 .track-source-btn {
+	max-width: 80%;
+}
+.track-source-btn p{
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	position: relative;
+}
+
+.track-source {
 }
 
 .track-fx {
-	overflow: visible;
+	overflow: auto;
 	height: auto;
 }
 
 .track-component {
-	overflow: visible;
+	overflow: scroll;
 	margin-top: 1rem;
 }
 
 .tracks {
-	overflow: visible;
+	overflow: auto;
 	border-top: 1px solid black;
 	/*box-shadow: 0 0px 1px rgba(0,0,0,0.7);*/
 	/*height: auto;*/

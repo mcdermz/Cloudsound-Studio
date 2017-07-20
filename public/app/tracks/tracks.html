@@ -1,22 +1,13 @@
 <div class="wrapper">
   <div class="columns">
-    <!-- <div class="column">
-      <div class="button is-success is-outlined">
-        <strong>{{$ctrl.source.category}}</strong>
-      </div>
-    </div> -->
-    <div class="column is-12">
-      <div class="button track-source-btn is-dark">
+    <div class="column is-12 track-source">
+      <div class="button is-small track-source-btn is-dark">
         <p>{{$ctrl.source.sampleName}}</p>
       </div>
     </div>
   </div>
   <div class="track-meter columns">
     <canvas class="visualizer" id="{{$ctrl.trackName}}" height="85"></canvas>
-  </div>
-  <div class="columns">
-
-    <div class="column is-1"></div>
   </div>
   <track-controls
     fader="$ctrl.fader"
