@@ -9,11 +9,14 @@ canvas {
 }
 
 .track-component, canvas {
-	background-color: rgb(94, 94, 94);
+	background-color: rgb(108, 108, 108);
 	border-top: 1px solid black;
   border-bottom: 1px solid black;
   box-shadow: 0 -2px 4px rgba(0,0,0,0.7),
               0 3px 4px rgba(0,0,0,0.7);
+}
+
+.track-source-btn {
 }
 
 .track-fx {

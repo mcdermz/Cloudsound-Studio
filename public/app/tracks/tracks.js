@@ -27,6 +27,7 @@
       })
       track.trackName = vm.trackName
       track.url = vm.srcAudioUrl
+      vm.source = tracksService.sourceDisplayName(vm.srcAudioUrl)
     }
 
     const getData = function(data) {

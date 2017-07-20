@@ -8,6 +8,22 @@
 
   function service($state, studioService){
 
+    this.sourceDisplayName = function(url) {
+      const arr = url.split('/')
+      const category = arr[0].toUpperCase()
+      const sampleFile = arr[1].split('.')
+      let sampleName = sampleFile[0].split('-').map(el => {
+        if (el.charAt(0).match(/[a-z]/)) {
+          return el.charAt(0).toUpperCase() + el.substr(1)
+        } else {
+          return el
+        }
+      })
+      sampleName = sampleName.join(' ')
+
+      return { category, sampleName }
+    }
+
     this.setTrackData = function(vm) {
       let data = {
         room: $state.params.room,
