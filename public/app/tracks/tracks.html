@@ -3,12 +3,12 @@
     <canvas class="visualizer" id="{{$ctrl.trackName}}" height="75"></canvas>
   </div>
   <div class="tracks columns is-mobile track-fx">
-    <div class="column is-4">
-      <faders
+    <div class="column">
+      <track-controls
         fader="$ctrl.fader"
         gain-node="$ctrl.gainNode"
         track-name="{{$ctrl.trackName}}">
-      </faders>
+      </track-controls>
     </div>
   </div>
 </div>

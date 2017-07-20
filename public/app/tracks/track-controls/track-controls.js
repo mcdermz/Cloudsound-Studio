@@ -1,8 +1,8 @@
 (function (){
   angular.module('app')
-    .component('faders', {
+    .component('track-controls', {
       controller: controller,
-      templateUrl: './app/tracks/faders/faders.html',
+      templateUrl: './app/tracks/track-controls/track-controls.html',
       bindings: {
         trackName: '@',
         fader: '<',
