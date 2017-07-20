@@ -4,9 +4,9 @@
   angular.module('app')
   .service('audioService', service)
 
-  service.$inject = ['$http', 'visualizerService']
+  service.$inject = ['$http', 'visualizerService', 'studioService']
 
-  function service($http, visualizerService){
+  function service($http, visualizerService, studioService){
     window.AudioContext = window.AudioContext||window.webkitAudioContext
 
     this.ctx = new AudioContext()
@@ -14,9 +14,10 @@
     this.masterGain.gain.value = 0
 
     this.getData = async function(track) {
+      const baseUrl = studioService.baseUrl
       const urlPkg = {
         method: 'GET',
-        url: track.url,
+        url: baseUrl + track.url,
         responseType: 'arraybuffer'
       }
       track.source = this.ctx.createBufferSource()
