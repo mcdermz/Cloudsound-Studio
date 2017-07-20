@@ -9,6 +9,7 @@ canvas {
 }
 
 .track-component, canvas {
+	background-color: rgb(94, 94, 94);
 	border-top: 1px solid black;
   border-bottom: 1px solid black;
   box-shadow: 0 -2px 4px rgba(0,0,0,0.7),

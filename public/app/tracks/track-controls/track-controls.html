@@ -1,4 +1,17 @@
-<div class="columns track-controls-container">
+<div class="columns">
+  <div class="column is-1">
+
+  </div>
+  <div class="column">
+    <div class="button is-black">
+      Change source
+    </div>
+  </div>
+  <div class="column is-1">
+
+  </div>
+</div>
+<div class="columns track-controls-container is-mobile">
   <div class="column is-3">
     <div class="tile is-ancestor is-vertical">
       <div class="tile">
@@ -33,6 +46,8 @@
       ng-disabled="$ctrl.isOccupied"
       ng-class="{'parameter-occupied': $ctrl.isOccupied}"
       type="range">
-      <button class="track-fader-btn button is-btn is-black" type="button" name="button"><strong>{{$ctrl.fader}}</strong></button>
+  </div>
+  <div class="column is-3">
+    <button class="track-fader-btn button is-btn is-black" type="button" name="button"><strong>{{$ctrl.fader}}</strong></button>
   </div>
 </div>

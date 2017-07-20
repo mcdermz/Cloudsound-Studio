@@ -20,13 +20,13 @@
 }
 
 button.muted-by-solo {
-  background-color: rgba(255, 115, 0, 1)!important;
+  background-color: rgba(227, 89, 0, 1)!important;
   animation: pulse 1s infinite ease-in;
 }
 
 @-webkit-keyframes pulse {
   85% {
-    background-color: rgba(255, 115, 0, 0.7);
+    background-color: rgba(227, 89, 0, 0.5);
   }
 }
 
@@ -37,7 +37,7 @@ button.muted-by-solo {
       -webkit-transform-origin: left center;*/
       position: relative;
       overflow: hidden;
-      width: 60%;
+      width: 100%;
       border: solid rgba(0,0,0,0.3) 1px;
       border-bottom: solid rgba(0,0,0,0.5) 1px;
       border-left: solid rgba(0,0,0,0.5) 1px;

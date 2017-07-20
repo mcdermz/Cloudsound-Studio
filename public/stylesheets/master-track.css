@@ -3,5 +3,4 @@ input[type="range"].master-fader {
   width: 15rem;
   -webkit-transform: rotate(-90deg);
   -webkit-transform-origin: bottom right;
-  /*margin: 50px;*/
 }
