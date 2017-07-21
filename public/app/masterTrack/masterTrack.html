@@ -1,22 +1,51 @@
-<button
-  ng-disabled="$ctrl.isPlaying"
-  ng-click="$ctrl.sendPlayMessage()"
-  class="button is-large is-success"
-  type="button"
-  name="button">PLAY</button>
-<button
-  ng-click="$ctrl.sendStopMessage()"
-  class="button is-large is-danger"
-  type="button"
-  name="button">STOP</button>
-<button
-  ng-click="$ctrl.clearSolo()"
-  class="button is-large is-warning"
-  type="button"
-  name="button">CLEAR SOLO</button>
-<input
-  ng-model="$ctrl.fader"
-  ng-change="$ctrl.faderChange()"
-  class="master-fader"
-  type="range">
-<button type="button" name="button">{{$ctrl.fader}}</button>
+<div class="columns master-track-component">
+  <div class="column">
+    <div class="columns">
+      <div class="column is-6">
+        <label class="checkbox">
+          <input type="checkbox" ng-model="$ctrl.is8Track" ng-click="$ctrl.eightTrackToggle()" name="" value="">
+          Toggle 8-Track Mode
+        </label>
+      </div>
+    </div>
+    <div class="columns">
+      <div class="column">
+        <button
+          ng-disabled="$ctrl.isPlaying"
+          ng-click="$ctrl.sendPlayMessage()"
+          class="button is-large is-success"
+          type="button"
+          name="button">PLAY</button>
+        <button
+          ng-click="$ctrl.sendStopMessage()"
+          class="button is-large is-danger"
+          type="button"
+          name="button">STOP</button>
+        <button
+          ng-click="$ctrl.clearSolo()"
+          class="button is-large is-warning"
+          type="button"
+          name="button">CLEAR SOLO</button>
+      </div>
+    </div>
+  </div>
+  <div class="column is-3">
+    <div class="tile is-ancestor is-vertical">
+      <div class="tile">
+        <div class="column has-text-centered">
+          Master Volume
+        </div>
+      </div>
+      <div class="tile">
+        <button class="button master-fader is-black" type="button" name="button"><strong>{{$ctrl.fader}}</strong></button>
+      </div>
+      <div class="tile">
+        <input
+        ng-model="$ctrl.fader"
+        ng-change="$ctrl.faderChange()"
+        class="master-fader"
+        type="range">
+      </div>
+    </div>
+  </div>
+</div>

@@ -8,7 +8,7 @@ canvas {
 	width: 100%;
 }
 
-.track-component, canvas {
+.track-component, canvas, .master-track-component {
 	background-color: rgb(108, 108, 108);
 	border-top: 1px solid black;
   border-bottom: 1px solid black;

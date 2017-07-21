@@ -1,4 +1,4 @@
-.track-fader-btn strong {
+.track-fader-btn strong, .master-fader strong {
   color: #12a305;
 }
 
@@ -35,8 +35,6 @@ button.muted-by-solo {
 /* fader style */
 @media screen and (-webkit-min-device-pixel-ratio:0) {
     input[type='range'] {
-      /*-webkit-transform: rotate(-90deg);
-      -webkit-transform-origin: left center;*/
       position: relative;
       overflow: hidden;
       width: 100%;
