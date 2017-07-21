@@ -65,6 +65,10 @@ io.on('connection', function (socket) {
   socket.on('parameter is unoccupied', function(data) {
     socket.to(data.room).emit('unoccupy parameter', data)
   })
+
+  socket.on('change track source', function(data) {
+    io.to(data.room).emit('receive source change', data)
+  })
 })
 
 module.exports = io;

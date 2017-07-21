@@ -20,6 +20,14 @@
     let url
     const track = { gainNode: vm.gainNode, url }
 
+    const setData = function() {
+      return tracksService.setTrackData(vm)
+    }
+
+    const getData = function(data) {
+      tracksService.getTrackData(vm, data)
+    }
+
     vm.$onInit = async function() {
       // establish blank canvas
       const canvases = document.querySelectorAll('.visualizer')
@@ -42,13 +50,19 @@
     }
 
     vm.changeSource = function(sample) {
-      vm.gainNode.gain.value = 0
-      vm.srcAudioUrl = sample.url
-      vm.$onInit()
+      const data = setData()
+      data.sampleUrl = sample.url
+      socket.emit('change track source', data)
     }
 
-    const getData = function(data) {
-      tracksService.getTrackData(vm, data)
+    const changeSource = function() {
+      return function(msg){
+        if (msg.trackName === vm.trackName){
+          getData(msg)
+          vm.srcAudioUrl = msg.sampleUrl
+          vm.$onInit()
+        }
+      }
     }
 
     const play = function (){
@@ -76,6 +90,7 @@
       }
     }
 
+    socket.on('receive source change', changeSource())
     socket.on('play all tracks', play())
     socket.on('stop track', stop())
     socket.on('receive fader level', receiveFaderLevel())
