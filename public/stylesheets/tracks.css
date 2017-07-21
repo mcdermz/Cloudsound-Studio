@@ -19,6 +19,7 @@ canvas {
 .track-source-btn {
 	max-width: 80%;
 }
+
 .track-source-btn p{
 	overflow: hidden;
 	white-space: nowrap;
@@ -26,11 +27,28 @@ canvas {
 	position: relative;
 }
 
-.track-source {
+.available-samples {
+	position: absolute;
+	top:100%;
+	width: 150%;
+	left:0;
+	background:#464646;
+	padding:0;
+	z-index: 5;
+}
+
+.available-samples li {
+	margin: .2rem;
+	font-size: .8rem;
+	width: 100%;
+}
+
+.available-samples li a {
+	color: white;
 }
 
 .track-fx {
-	overflow: auto;
+	/*overflow: auto;*/
 	height: auto;
 }
 
@@ -40,7 +58,7 @@ canvas {
 }
 
 .tracks {
-	overflow: auto;
+	/*overflow: auto;*/
 	border-top: 1px solid black;
 	/*box-shadow: 0 0px 1px rgba(0,0,0,0.7);*/
 	/*height: auto;*/

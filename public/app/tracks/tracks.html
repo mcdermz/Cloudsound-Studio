@@ -1,8 +1,13 @@
 <div class="wrapper">
   <div class="columns">
     <div class="column is-12 track-source">
-      <div class="button is-small track-source-btn is-dark">
-        <p>{{$ctrl.source.sampleName}}</p>
+      <div ng-click="$ctrl.showSamples = !$ctrl.showSamples" class="button is-small track-source-btn is-dark">
+        <div class="menu">
+          <p class="">{{$ctrl.source.sampleName}}</p>
+          <ul ng-show="$ctrl.showSamples" class="available-samples menu-list">
+            <li class="sample-select has-text-left" ng-repeat="sample in $ctrl.samples"><a class="is-dark">{{sample.sampleName}}</a></li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>

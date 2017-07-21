@@ -9,9 +9,9 @@
       },
     })
 
-  controller.$inject = ['socket', 'audioService', 'visualizerService', 'tracksService']
+  controller.$inject = ['socket', 'audioService', 'visualizerService', 'tracksService', 'studioService']
 
-  function controller(socket, audioService, visualizerService, tracksService) {
+  function controller(socket, audioService, visualizerService, tracksService, studioService) {
     const vm = this
     const ctx = audioService.ctx
     vm.gainNode = ctx.createGain()
@@ -20,7 +20,7 @@
     let url
     const track = { gainNode: vm.gainNode, url }
 
-    vm.$onInit = function() {
+    vm.$onInit = async function() {
       const canvases = document.querySelectorAll('.visualizer')
       canvases.forEach(canvas => {
         visualizerService.canvasInit(canvas)
@@ -28,6 +28,17 @@
       track.trackName = vm.trackName
       track.url = vm.srcAudioUrl
       vm.source = tracksService.sourceDisplayName(vm.srcAudioUrl)
+
+      studioService.getAvailableTracks().then(samples => {
+        vm.samples = samples.map(sample => {
+          return tracksService.sourceDisplayName(sample)
+        })
+      })
+      .catch(err => {
+        console.error(err);
+      })
+
+      audioService.getData(track)
     }
 
     const getData = function(data) {
@@ -36,7 +47,6 @@
 
     const play = function (){
       return function() {
-        audioService.getData(track)
         track.source.start()
       }
     }
@@ -45,6 +55,7 @@
       return function() {
         vm.gainNode.gain.value = 0
         track.source.stop(ctx.currentTime + 0.1)
+        audioService.getData(track)
       }
     }
 
