@@ -1,20 +1,12 @@
 <nav class="navbar">
   <div class="navbar-brand">
-    <a class="navbar-item" href="/images/CS-temp-logo.png">
-      <img src="/images/CS-temp-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
+    <a ng-mouseenter="$ctrl.isActive = true" ng-mouseleave="$ctrl.isActive = false" class="navbar-item" href="/images/CS-temp-logo.png">
+      <img ng-show="$ctrl.isActive" src="/images/name-and-logo-inverse.png" alt="Cloudsound Studio">
+      <img ng-show="!$ctrl.isActive" src="/images/name-and-logo.png" alt="Cloudsound Studio">
     </a>
   </div>
 
   <div id="navMenuExample" class="navbar-menu">
-    <div class="navbar-start">
-      <a class="navbar-item" href="/">
-        Home
-      </a>
-      <a class="navbar-item" href="/">
-        Tracks
-      </a>
-    </div>
-
     <div class="navbar-end">
       <a class="navbar-item" href="https://github.com/mcdermz/cloudsound-studios" target="_blank">
         Github
