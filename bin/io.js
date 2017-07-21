@@ -24,13 +24,13 @@ io.on('connection', function (socket) {
     io.to(data.room).emit('received-message', data.msg)
   })
 
-  socket.on('play track', function(data) {
-    io.to(data.room).emit('play track', 'Server: all tracks are playing!')
+  socket.on('play all tracks', function(data) {
+    io.to(data.room).emit('play all tracks', 'Server: all tracks are playing!')
     io.to(data.room).emit('play status', data.isPlaying)
   })
 
-  socket.on('play all tracks', function(data){
-    io.to(data.room).emit('play all tracks', data)
+  socket.on('play track', function(data){
+    io.to(data.room).emit('play track', data)
   })
 
   socket.on('stop track', function(data) {

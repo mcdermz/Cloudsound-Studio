@@ -91,7 +91,7 @@
     }
 
     socket.on('receive source change', changeSource())
-    socket.on('play all tracks', play())
+    socket.on('play track', play())
     socket.on('stop track', stop())
     socket.on('receive fader level', receiveFaderLevel())
   }

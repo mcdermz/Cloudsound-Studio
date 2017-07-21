@@ -11,16 +11,17 @@
     <div class="columns">
       <div class="column">
         <button
-          ng-disabled="$ctrl.isPlaying"
+          ng-show="!$ctrl.isPlaying"
           ng-click="$ctrl.sendPlayMessage()"
           class="button is-large is-success"
           type="button"
-          name="button">PLAY</button>
+          name="button">PLAY ALL</button>
         <button
+          ng-show="$ctrl.isPlaying"
           ng-click="$ctrl.sendStopMessage()"
           class="button is-large is-danger"
           type="button"
-          name="button">STOP</button>
+          name="button">STOP ALL</button>
         <button
           ng-click="$ctrl.clearSolo()"
           class="button is-large is-warning"

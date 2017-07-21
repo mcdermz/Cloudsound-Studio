@@ -29,7 +29,7 @@
 
     vm.sendPlayMessage = function() {
       data.isPlaying = true
-      socket.emit('play track', data)
+      socket.emit('play all tracks', data)
     }
 
     vm.sendStopMessage = function() {
