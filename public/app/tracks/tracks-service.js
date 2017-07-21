@@ -21,7 +21,7 @@
       })
       sampleName = sampleName.join(' ')
 
-      return { category, sampleName }
+      return { category, sampleName, url }
     }
 
     this.setTrackData = function(vm) {

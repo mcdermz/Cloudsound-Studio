@@ -41,6 +41,12 @@
       audioService.getData(track)
     }
 
+    vm.changeSource = function(sample) {
+      vm.gainNode.gain.value = 0
+      vm.srcAudioUrl = sample.url
+      vm.$onInit()
+    }
+
     const getData = function(data) {
       tracksService.getTrackData(vm, data)
     }

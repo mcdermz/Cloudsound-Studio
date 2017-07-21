@@ -5,7 +5,12 @@
         <div class="menu">
           <p class="">{{$ctrl.source.sampleName}}</p>
           <ul ng-show="$ctrl.showSamples" class="available-samples menu-list">
-            <li class="sample-select has-text-left" ng-repeat="sample in $ctrl.samples"><a class="is-dark">{{sample.sampleName}}</a></li>
+            <li
+              class="sample-select has-text-left"
+              ng-repeat="sample in $ctrl.samples"
+              ng-click="$ctrl.changeSource(sample)">
+              <a class="is-dark">{{sample.sampleName}}</a>
+            </li>
           </ul>
         </div>
       </div>

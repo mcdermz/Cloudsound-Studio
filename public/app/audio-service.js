@@ -20,6 +20,7 @@
         url: baseUrl + track.url,
         responseType: 'arraybuffer'
       }
+
       track.source = this.ctx.createBufferSource()
       track.analyser = this.ctx.createAnalyser()
       analyserConfig(track)
