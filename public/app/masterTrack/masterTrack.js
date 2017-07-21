@@ -34,7 +34,7 @@
 
     vm.sendStopMessage = function() {
       data.isPlaying = false
-      socket.emit('stop track', data)
+      socket.emit('stop all tracks', data)
     }
 
     vm.clearSolo = function() {

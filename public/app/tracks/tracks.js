@@ -75,10 +75,12 @@
     }
 
     const stop = function (){
-      return function() {
-        vm.gainNode.gain.value = 0
-        track.source.stop(ctx.currentTime + 0.1)
-        audioService.getData(track)
+      return function(msg) {
+        if (msg.trackName === vm.trackName) {
+          vm.gainNode.gain.value = 0
+          track.source.stop(ctx.currentTime + 0.1)
+          audioService.getData(track)
+        }
       }
     }
 

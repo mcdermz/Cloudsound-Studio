@@ -99,6 +99,10 @@
       const data = setData()
       socket.emit('play track', data)
     })
+    socket.on('stop all tracks', function() {
+      const data = setData()
+      socket.emit('stop track', data)
+    })
     socket.on('receive solo track', onSolo(vm))
     socket.on('receive mute track', onMute(vm))
     socket.on('receive mute by solo', onMuteBySolo(vm))
