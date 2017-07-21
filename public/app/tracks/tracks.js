@@ -14,11 +14,10 @@
   function controller(socket, audioService, visualizerService, tracksService, studioService) {
     const vm = this
     const ctx = audioService.ctx
-    vm.gainNode = ctx.createGain()
-    vm.gainNode.gain.value = 0.5
+
 
     let url
-    const track = { gainNode: vm.gainNode, url }
+    const track = { url }
 
     const setData = function() {
       return tracksService.setTrackData(vm)
@@ -47,6 +46,7 @@
       track.trackName = vm.trackName
       track.url = vm.srcAudioUrl
       audioService.getData(track)
+      vm.gainNode = track.gainNode
     }
 
     vm.changeSource = function(sample) {
@@ -79,7 +79,9 @@
         if (msg.trackName === vm.trackName) {
           vm.gainNode.gain.value = 0
           track.source.stop(ctx.currentTime + 0.1)
-          audioService.getData(track)
+          setTimeout(() => {
+            audioService.getData(track)
+          }, 700)
         }
       }
     }

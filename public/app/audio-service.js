@@ -14,6 +14,8 @@
     this.masterGain.gain.value = 0
 
     this.getData = async function(track) {
+      track.gainNode = this.ctx.createGain()
+      track.gainNode.gain.value = 0.5
       const baseUrl = studioService.baseUrl
       const urlPkg = {
         method: 'GET',
