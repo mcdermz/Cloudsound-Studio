@@ -21,23 +21,23 @@
     const track = { gainNode: vm.gainNode, url }
 
     vm.$onInit = async function() {
+      // establish blank canvas
       const canvases = document.querySelectorAll('.visualizer')
-      canvases.forEach(canvas => {
-        visualizerService.canvasInit(canvas)
-      })
+      canvases.forEach(canvas => { visualizerService.canvasInit(canvas) })
+
+      // format source audio names and prepare available sample selections
+      vm.source = tracksService.sourceDisplayName(vm.srcAudioUrl)
+      try {
+        let samples = await studioService.getAvailableTracks()
+        vm.samples = samples.map(sample => tracksService.sourceDisplayName(sample))
+      }
+      catch(err) {
+        console.error(err);
+      }
+
+      // preload sample so playback begins immediately on play()
       track.trackName = vm.trackName
       track.url = vm.srcAudioUrl
-      vm.source = tracksService.sourceDisplayName(vm.srcAudioUrl)
-
-      studioService.getAvailableTracks().then(samples => {
-        vm.samples = samples.map(sample => {
-          return tracksService.sourceDisplayName(sample)
-        })
-      })
-      .catch(err => {
-        console.error(err);
-      })
-
       audioService.getData(track)
     }
 
@@ -46,8 +46,11 @@
     }
 
     const play = function (){
-      return function() {
-        track.source.start()
+      return function(msg) {
+        if (msg.trackName === vm.trackName) {
+          getData(msg)
+          track.source.start()
+        }
       }
     }
 
@@ -60,14 +63,14 @@
     }
 
     const receiveFaderLevel = function() {
-      return function(msg){
+      return function(msg) {
         if (msg.trackName === vm.trackName){
           getData(msg)
         }
       }
     }
 
-    socket.on('play track', play())
+    socket.on('play all tracks', play())
     socket.on('stop track', stop())
     socket.on('receive fader level', receiveFaderLevel())
   }

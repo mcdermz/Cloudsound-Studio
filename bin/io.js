@@ -29,6 +29,10 @@ io.on('connection', function (socket) {
     io.to(data.room).emit('play status', data.isPlaying)
   })
 
+  socket.on('play all tracks', function(data){
+    io.to(data.room).emit('play all tracks', data)
+  })
+
   socket.on('stop track', function(data) {
     io.to(data.room).emit('stop track', 'Server: all tracks are stopped!')
     io.to(data.room).emit('play status', data.isPlaying)
