@@ -44,7 +44,7 @@
       vm.isSoloed = data.isSoloed
       vm.fader = data.fader
       studioService.soloedTracks = data.soloedTracks
-      track.gainNode.gain.value = (data.isMuted || data.isMutedBySolo) ? 0 : data.fader/100
+      vm.gainNode.gain.value = (data.isMuted || data.isMutedBySolo) ? 0 : data.fader/100
     }
   }
 })()

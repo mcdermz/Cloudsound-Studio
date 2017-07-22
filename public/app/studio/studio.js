@@ -27,14 +27,14 @@
       }
     }
 
-    vm.eightTrackToggle = function() {
-      const is8Track = vm.is8Track || false
-      const data = { room, is8Track }
-      socket.emit('8 track toggle', data)
-    }
-
-    socket.on('8 track toggle', function(msg) {
-      vm.is8Track = msg.is8Track
-    })
+    // vm.eightTrackToggle = function() {
+    //   const is8Track = vm.is8Track || false
+    //   const data = { room, is8Track }
+    //   socket.emit('8 track toggle', data)
+    // }
+    //
+    // socket.on('8 track toggle', function(msg) {
+    //   vm.is8Track = msg.is8Track
+    // })
   }
 })()

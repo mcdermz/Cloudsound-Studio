@@ -9,23 +9,13 @@
   function service($http, socket, visualizerService, studioService){
     window.AudioContext = window.AudioContext||window.webkitAudioContext
 
-
-    socket.on('room connect', function() {
-      console.log('connected!');
-    })
-
-    socket.on('room disconnect', function() {
-      console.log('disconnected!');
-    })
-
-    
     this.ctx = new AudioContext()
     this.masterGain = this.ctx.createGain()
     this.masterGain.gain.value = 0
 
     this.getData = async function(track) {
-      track.gainNode = this.ctx.createGain()
-      track.gainNode.gain.value = 0.5
+      // track.gainNode = this.ctx.createGain()
+      // track.gainNode.gain.value = 0.5
       const baseUrl = studioService.baseUrl
       const urlPkg = {
         method: 'GET',

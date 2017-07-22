@@ -16,9 +16,9 @@ io.on('connection', function (socket) {
     io.to(room).emit('room created', data)
   })
 
-  socket.on('8 track toggle', function(data) {
-    io.to(data.room).emit('8 track toggle', data)
-  })
+  // socket.on('8 track toggle', function(data) {
+  //   io.to(data.room).emit('8 track toggle', data)
+  // })
 
   socket.on('sent-message', function(data) {
     io.to(data.room).emit('received-message', data.msg)

@@ -46,6 +46,7 @@
       track.trackName = vm.trackName
       track.url = vm.srcAudioUrl
       vm.is8Track = true
+      track.gainNode = audioService.ctx.createGain()
       audioService.getData(track)
       vm.gainNode = track.gainNode
     }
@@ -59,8 +60,8 @@
     const changeSource = function() {
       return function(msg){
         if (msg.trackName === vm.trackName){
-          getData(msg)
           vm.srcAudioUrl = msg.sampleUrl
+          getData(msg)
           vm.$onInit()
         }
       }
@@ -79,14 +80,9 @@
       return function(msg) {
         if (msg.trackName === vm.trackName) {
           vm.gainNode.gain.value = 0
-          try {
-            track.source.stop(ctx.currentTime + 0.1)
-          }
-          finally {
-            setTimeout(() => {
-              audioService.getData(track)
-            }, 700)
-          }
+          track.source.stop(ctx.currentTime + 0.1)
+          vm.$onInit()
+          getData(msg)
         }
       }
     }
