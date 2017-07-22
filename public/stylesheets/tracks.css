@@ -1,6 +1,6 @@
 .wrapper {
 	max-width: 400px;
-	min-height: 85px;
+	height: 90%;
 	margin: 0 auto;
 }
 
@@ -53,7 +53,7 @@ canvas {
 }
 
 .track-component {
-	overflow: scroll;
+	overflow: visible;
 	margin-top: 1rem;
 }
 

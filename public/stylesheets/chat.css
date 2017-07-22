@@ -1,5 +1,5 @@
 .chat-component .content{
-  height: 15rem;
+  /*height: 15rem;*/
   overflow: scroll;
   background-color: white;
 }

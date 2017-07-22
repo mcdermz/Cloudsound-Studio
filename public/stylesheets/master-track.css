@@ -3,7 +3,7 @@ input[type="range"].master-fader {
   display: inline-block;
   height: 1rem;
   width: 100%;
-  -webkit-transform: rotate(-90deg);
+  /*-webkit-transform: rotate(-90deg);*/
   -webkit-transform-origin: center;
 }
 
