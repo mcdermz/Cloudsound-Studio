@@ -21,14 +21,13 @@
   </div>
 
   <div class="chat-master-container columns ">
+    <div class="column is-1">
+      <label class="checkbox is-light">
+        <input class="button is-large" type="checkbox" ng-model="$ctrl.is8Track" ng-click="$ctrl.eightTrackToggle()" name="" value="Toggle 8-Track Mode">
+      </label>
+    </div>
     <div class="chat-component column is-one-third">
       <chat></chat>
-    </div>
-    <div class="column is-1">
-      <label class="checkbox">
-        <input type="checkbox" ng-model="$ctrl.is8Track" ng-click="$ctrl.eightTrackToggle()" name="" value="">
-        Toggle 8-Track Mode
-      </label>
     </div>
     <div class="master-component column">
       <master-track></master-track>
