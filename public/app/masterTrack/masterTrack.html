@@ -1,5 +1,5 @@
 <div class="columns master-track-component">
-  <div class="column">
+  <div class="column is-half">
     <div class="columns is-mobile">
       <div class="column">
         <button
@@ -24,28 +24,27 @@
       </div>
     </div>
   </div>
-  <div class="column is-1">
-
-  </div>
-  <div class="column is-4">
+  <div class="column">
     <div class="tile is-ancestor is-vertical has-text-centered">
       <div class="tile">
-        <div class="column master-volume-label">
-          <p><strong>MASTER VOLUME</strong></p>
+        <div class="column"></div>
+        <div class="column is-two-thirds master-volume-label">
+          <p>MASTER VOLUME</p>
+        </div>
+        <div class="column is-2">
+          <button class="button master-fader is-black" type="button" name="button"><strong>{{$ctrl.fader}}</strong></button>
+        </div>
+        <div class="column"></div>
+      </div>
+      <div class="tile">
+        <div class="column">
+          <input
+          ng-model="$ctrl.fader"
+          ng-change="$ctrl.faderChange()"
+          class="master-fader"
+          type="range">
         </div>
       </div>
-      <div class="tile">
-        <input
-        ng-model="$ctrl.fader"
-        ng-change="$ctrl.faderChange()"
-        class="master-fader"
-        type="range">
-      </div>
-      <div class="tile">
-      </div>
     </div>
-  </div>
-  <div class="column is-2">
-    <button class="button master-fader is-black" type="button" name="button"><strong>{{$ctrl.fader}}</strong></button>
   </div>
 </div>

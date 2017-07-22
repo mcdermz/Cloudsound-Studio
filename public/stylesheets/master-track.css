@@ -2,7 +2,7 @@ input[type="range"].master-fader {
   position: relative;
   display: inline-block;
   height: 1rem;
-  width: 100%;
+  width: 90%;
   /*-webkit-transform: rotate(-90deg);*/
   -webkit-transform-origin: center;
 }
@@ -16,6 +16,6 @@ input[type="range"].master-fader {
   border-radius: 0.2rem;
 }
 
-.master-track-component p strong {
+.master-track-component p {
   color: #e0e1dd;
 }
