@@ -9,11 +9,11 @@
           </tracks>
         </div>
       </div>
-      <div class="tile" ng-if="$ctrl.is8Track">
-        <div class="track-component column is-one-quarter" ng-repeat="track8 in $ctrl.trackNames8">
+      <div class="tile">
+        <div class="track-component column is-one-quarter" ng-repeat="track in $ctrl.trackNames8">
           <tracks
-            src-audio-url="{{$ctrl.trackData[track8].srcAudioUrl}}"
-            track-name="{{$ctrl.trackData[track8].name}}">
+            src-audio-url="{{$ctrl.trackData[track].srcAudioUrl}}"
+            track-name="{{$ctrl.trackData[track].name}}">
           </tracks>
         </div>
       </div>
@@ -22,9 +22,7 @@
 
   <div class="chat-master-container columns ">
     <div class="column is-1">
-      <label class="checkbox is-light">
-        <input class="button is-large" type="checkbox" ng-model="$ctrl.is8Track" ng-click="$ctrl.eightTrackToggle()" name="" value="Toggle 8-Track Mode">
-      </label>
+      <input class="button is-large toggle-8-track" type="checkbox" ng-model="$ctrl.is8Track" ng-click="$ctrl.eightTrackToggle()" name="" value="Toggle 8-Track Mode">
     </div>
     <div class="chat-component column is-one-third">
       <chat></chat>

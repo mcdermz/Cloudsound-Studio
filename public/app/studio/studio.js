@@ -15,7 +15,6 @@
       vm.trackNames4 = studioService.trackNames.slice(0, 4);
       vm.trackNames8 = studioService.trackNames.slice(4)
       vm.trackData = studioService.presetTracks
-
       vm.getTracks = await studioService.getAvailableTracks()
     }
 

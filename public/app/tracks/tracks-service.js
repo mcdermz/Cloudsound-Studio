@@ -37,14 +37,14 @@
       return data
     }
 
-    this.getTrackData = function(vm, data) {
+    this.getTrackData = function(vm, data, track) {
       vm.trackName = data.trackName
       vm.isMuted = data.isMuted
       vm.isMutedBySolo = (data.isMutedBySolo && !data.isSoloed)
       vm.isSoloed = data.isSoloed
       vm.fader = data.fader
       studioService.soloedTracks = data.soloedTracks
-      vm.gainNode.gain.value = (data.isMuted || data.isMutedBySolo) ? 0 : data.fader/100
+      track.gainNode.gain.value = (data.isMuted || data.isMutedBySolo) ? 0 : data.fader/100
     }
   }
 })()

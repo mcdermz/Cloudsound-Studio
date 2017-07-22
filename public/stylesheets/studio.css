@@ -11,3 +11,7 @@
   outline: -webkit-focus-ring-color auto 5px;
   outline-color: red;
 }
+
+.toggle-8-track {
+  display: none
+}

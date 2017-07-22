@@ -24,7 +24,7 @@
     }
 
     const getData = function(data) {
-      tracksService.getTrackData(vm, data)
+      tracksService.getTrackData(vm, data, track)
     }
 
     vm.$onInit = async function() {
@@ -45,6 +45,7 @@
       // preload sample so playback begins immediately on play()
       track.trackName = vm.trackName
       track.url = vm.srcAudioUrl
+      vm.is8Track = true
       audioService.getData(track)
       vm.gainNode = track.gainNode
     }
@@ -78,10 +79,14 @@
       return function(msg) {
         if (msg.trackName === vm.trackName) {
           vm.gainNode.gain.value = 0
-          track.source.stop(ctx.currentTime + 0.1)
-          setTimeout(() => {
-            audioService.getData(track)
-          }, 700)
+          try {
+            track.source.stop(ctx.currentTime + 0.1)
+          }
+          finally {
+            setTimeout(() => {
+              audioService.getData(track)
+            }, 700)
+          }
         }
       }
     }

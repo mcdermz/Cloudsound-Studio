@@ -4,11 +4,21 @@
   angular.module('app')
   .service('audioService', service)
 
-  service.$inject = ['$http', 'visualizerService', 'studioService']
+  service.$inject = ['$http', 'socket', 'visualizerService', 'studioService']
 
-  function service($http, visualizerService, studioService){
+  function service($http, socket, visualizerService, studioService){
     window.AudioContext = window.AudioContext||window.webkitAudioContext
 
+
+    socket.on('room connect', function() {
+      console.log('connected!');
+    })
+
+    socket.on('room disconnect', function() {
+      console.log('disconnected!');
+    })
+
+    
     this.ctx = new AudioContext()
     this.masterGain = this.ctx.createGain()
     this.masterGain.gain.value = 0
