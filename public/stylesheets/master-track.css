@@ -10,3 +10,12 @@ input[type="range"].master-fader {
 .master-track-component {
   margin: 0.5rem;
 }
+
+.master-track-component p {
+  background: #363636;
+  border-radius: 0.2rem;
+}
+
+.master-track-component p strong {
+  color: #e0e1dd;
+}

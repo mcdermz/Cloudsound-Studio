@@ -1,34 +1,32 @@
-<div class="studio-container container">
-  <div class="track-container tile is-ancestor">
-    <div class="tile is-vertical">
-      <div class="tile">
-        <div class="track-component column is-one-quarter" ng-repeat="track in $ctrl.trackNames4">
-          <tracks
-            src-audio-url="{{$ctrl.trackData[track].srcAudioUrl}}"
-            track-name="{{$ctrl.trackData[track].name}}">
-          </tracks>
+<div class="container">
+  <div class="studio-container container">
+    <div class="track-container tile is-ancestor">
+      <div class="tile is-vertical">
+        <div class="tile">
+          <div class="track-component column is-one-quarter" ng-repeat="track in $ctrl.trackNames4">
+            <tracks
+              src-audio-url="{{$ctrl.trackData[track].srcAudioUrl}}"
+              track-name="{{$ctrl.trackData[track].name}}">
+            </tracks>
+          </div>
+        </div>
+        <div class="tile">
+          <div class="track-component column is-one-quarter" ng-repeat="track in $ctrl.trackNames8">
+            <tracks
+              src-audio-url="{{$ctrl.trackData[track].srcAudioUrl}}"
+              track-name="{{$ctrl.trackData[track].name}}">
+            </tracks>
+          </div>
         </div>
       </div>
-      <div class="tile">
-        <div class="track-component column is-one-quarter" ng-repeat="track in $ctrl.trackNames8">
-          <tracks
-            src-audio-url="{{$ctrl.trackData[track].srcAudioUrl}}"
-            track-name="{{$ctrl.trackData[track].name}}">
-          </tracks>
-        </div>
+    </div>
+    <div class="chat-master-container columns ">
+      <div class="chat-component column is-5">
+        <chat></chat>
       </div>
-    </div>
-  </div>
-
-  <div class="chat-master-container columns ">
-    <div class="column is-1">
-      <input class="button is-large toggle-8-track" type="checkbox" ng-model="$ctrl.is8Track" ng-click="$ctrl.eightTrackToggle()" name="" value="Toggle 8-Track Mode">
-    </div>
-    <div class="chat-component column is-one-third">
-      <chat></chat>
-    </div>
-    <div class="master-component column">
-      <master-track></master-track>
+      <div class="master-component column">
+        <master-track></master-track>
+      </div>
     </div>
   </div>
 </div>
