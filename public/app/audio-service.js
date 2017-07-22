@@ -13,9 +13,7 @@
     this.masterGain = this.ctx.createGain()
     this.masterGain.gain.value = 0
 
-    this.getData = async function(track) {
-      // track.gainNode = this.ctx.createGain()
-      // track.gainNode.gain.value = 0.5
+    this.getAudioSourceData = async function(track) {
       const baseUrl = studioService.baseUrl
       const urlPkg = {
         method: 'GET',
@@ -39,6 +37,10 @@
       catch (error) {
         console.error(error);
       }
+    }
+
+    this.disconnectAudioSource = function(track) {
+      track.analyser.disconnect(this.masterGain)
     }
 
     const analyserConfig = function(track) {

@@ -24,7 +24,7 @@
     }
 
     const getData = function(data) {
-      tracksService.getTrackData(vm, data, track)
+      tracksService.getTrackData(vm, data)
     }
 
     vm.$onInit = async function() {
@@ -47,7 +47,7 @@
       track.url = vm.srcAudioUrl
       vm.is8Track = true
       track.gainNode = audioService.ctx.createGain()
-      audioService.getData(track)
+      audioService.getAudioSourceData(track)
       vm.gainNode = track.gainNode
     }
 
@@ -60,9 +60,10 @@
     const changeSource = function() {
       return function(msg){
         if (msg.trackName === vm.trackName){
+          audioService.disconnectAudioSource(track)
           vm.srcAudioUrl = msg.sampleUrl
-          getData(msg)
           vm.$onInit()
+          getData(msg)
         }
       }
     }
@@ -95,6 +96,9 @@
       }
     }
 
+    socket.on('disconnect', function(reason) {
+      audioService.disconnectAudioSource(track)
+    })
     socket.on('receive source change', changeSource())
     socket.on('play track', play())
     socket.on('stop track', stop())

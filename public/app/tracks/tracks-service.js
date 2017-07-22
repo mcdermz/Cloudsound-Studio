@@ -37,7 +37,7 @@
       return data
     }
 
-    this.getTrackData = function(vm, data, track) {
+    this.getTrackData = function(vm, data) {
       vm.trackName = data.trackName
       vm.isMuted = data.isMuted
       vm.isMutedBySolo = (data.isMutedBySolo && !data.isSoloed)
