@@ -26,3 +26,16 @@ body {
 .splash-title {
   color: #e0e1dd;
 }
+
+.top-logo {
+  background-image: url('http://eskipaper.com/images/cloud-background-2.jpg');
+
+   /* Full height */
+   height: 100%;
+
+   /* Create the parallax scrolling effect */
+   background-attachment: fixed;
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+}
