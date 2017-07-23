@@ -20,7 +20,7 @@ canvas {
 	max-width: 80%;
 }
 
-.track-source-btn p{
+.track-source-btn p {
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;

@@ -39,10 +39,10 @@
       },
       'eight': {
         name: 'eight',
-        srcAudioUrl: 'ktb/70s-electric-piano-28.mp3'
+        srcAudioUrl: 'ktb/longing-piano.mp3'
       }
     }
-    
+
     this.soloedTracks = 0
     this.onOccupy = function(controller, parameter, bool) {
       return function(msg) {

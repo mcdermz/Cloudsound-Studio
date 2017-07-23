@@ -57,6 +57,20 @@
       socket.emit('change track source', data)
     }
 
+    vm.playOneTrack = function() {
+      vm.trackIsPlaying = !vm.trackIsPlaying
+      if (vm.trackIsPlaying) {
+        try {
+          track.source.start()
+        }
+        catch (err){
+          vm.gainNode.gain.value = vm.fader/100
+        }
+      } else {
+        vm.gainNode.gain.value = 0
+      }
+    }
+
     const changeSource = function() {
       return function(msg){
         if (msg.trackName === vm.trackName){
