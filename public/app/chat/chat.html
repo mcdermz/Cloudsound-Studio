@@ -1,12 +1,14 @@
 <div class="tile is-ancestor is-vertical">
-  <div ng-show="$ctrl.isChatOpen" class="tile content">
-    <ul id="messages">
-      <li ng-repeat="m in $ctrl.chatMessages" ng-class="{even: $index % 2 !== 0}">{{m.message}}</li>
-    </ul>
+  <div id="chat-container" class="tile">
+    <div ng-show="$ctrl.isChatOpen" class="tile content box chat-content">
+      <ul id="messages">
+        <li ng-repeat="m in $ctrl.chatMessages" ng-class="{even: $index % 2 !== 0}">{{m.message}}</li>
+      </ul>
+    </div>
   </div>
   <div class="tile level" ng-keyup="$ctrl.keyup()">
     <div ng-show="!$ctrl.isChatOpen" ng-click="$ctrl.openChat()" class="level-left is-2">
-      <div class="button is-info">
+      <div class="button is-warning is-small">
         <i class="fa fa-comments"></i>
         <p>&nbsp;Expand Chat</p>
       </div>

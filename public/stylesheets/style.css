@@ -40,6 +40,9 @@ body {
    background-size: cover;
 }
 
+.master-track-component {
+}
+
 .subtitle a:hover {
   color: black !important;
 }
