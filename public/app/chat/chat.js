@@ -29,6 +29,10 @@
       }
     }
 
+    vm.openChat = function() {
+      vm.isChatOpen = !vm.isChatOpen
+      document.getElementById('chat').focus()
+    }
 
     const receivedMsg = function() {
       return function(received){
@@ -46,7 +50,7 @@
         vm.chatMessages.push({message: `${msg.id} has entered room: ${msg.room}`})
       }
     }
-    
+
     socket.on('received-message', receivedMsg())
     socket.on('room created', chatWelcome())
   }

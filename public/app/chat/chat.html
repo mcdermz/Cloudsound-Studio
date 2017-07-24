@@ -1,11 +1,21 @@
-<div class="box chat-component tile is-ancestor is-vertical">
-  <div class="content">
+<div class="tile is-ancestor is-vertical">
+  <div ng-show="$ctrl.isChatOpen" class="tile content">
     <ul id="messages">
       <li ng-repeat="m in $ctrl.chatMessages" ng-class="{even: $index % 2 !== 0}">{{m.message}}</li>
     </ul>
   </div>
-  <div class="columns" ng-keyup="$ctrl.keyup()">
-    <input ng-model="$ctrl.msg" class="input" id="chat" autocomplete="off"/>
-    <button ng-click="$ctrl.sendChat()"  class="button is-info">Send</button>
+  <div class="tile level" ng-keyup="$ctrl.keyup()">
+    <div ng-show="!$ctrl.isChatOpen" ng-click="$ctrl.openChat()" class="level-left is-2">
+      <div class="button is-info">
+        <i class="fa fa-comments"></i>
+        <p>&nbsp;Expand Chat</p>
+      </div>
+    </div>
+    <div class="column">
+      <input ng-blur="$ctrl.isChatOpen = false" ng-model="$ctrl.msg" class="input" id="chat" autocomplete="off"/>
+    </div>
+    <div class="level-right is-2">
+      <button ng-click="$ctrl.sendChat()" class="button is-info">Send</button>
+    </div>
   </div>
 </div>

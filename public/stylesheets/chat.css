@@ -1,19 +1,25 @@
-.chat-component .content{
-  /*height: 15rem;*/
+.chat-component .content {
+  max-height: 1rem;
   overflow: scroll;
-  background-color: white;
+  background-color: #e0e1dd;
+}
+
+.chat-component {
+  padding: 1rem;
+  margin-top: 1rem;
+  background-color: rgb(108, 108, 108);
 }
 
 #messages {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
 #messages li {
-    padding: 5px 10px;
+  padding: 5px 10px;
 }
 
-#messages li.even{
+#messages li.even {
   background: rgb(182, 182, 182);
 }
