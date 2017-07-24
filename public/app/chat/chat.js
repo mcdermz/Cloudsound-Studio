@@ -9,22 +9,21 @@
 
   function controller(socket, studioService, $state, $scope) {
     const vm = this
-    const roomName = $state.params.room
-
+    const room = $state.params.room
+    const chatData = { room }
     vm.chatMessages = []
 
     vm.keyup = function() {
       if (event.key === 'Enter') {
         vm.sendChat()
         let msgContainer = document.querySelector('.content')
-        console.log('top ', msgContainer.scrollTop);
       }
     }
 
     vm.sendChat = function(){
       if (vm.msg && vm.msg.trim() !== ''){
-        const msg = vm.msg.trim()
-        socket.emit('sent-message', {room: roomName, msg})
+        chatData.msg = vm.msg.trim()
+        socket.emit('sent-message', chatData)
         vm.msg = ''
       }
     }
@@ -35,11 +34,21 @@
       vm.hasNewMessage = false
     }
 
-    const receivedMsg = function() {
-      return function(received){
-        vm.chatMessages.push({message: received})
+    const receiveId = function() {
+      return function(msg) {
+        chatData.id = msg.id
+      }
+    }
+
+    const receiveMsg = function() {
+      return function(msg) {
+        console.log(studioService.socketId);
+        if (msg.id == studioService.socketId) {
+          msg.isClient = true
+        }
+        vm.chatMessages.push(msg)
         let msgContainer = document.querySelector('#messages')
-        setTimeout(function(){
+        setTimeout(() => {
           msgContainer.scrollTop = msgContainer.scrollHeight
         },10)
         vm.hasNewMessage = true
@@ -53,7 +62,8 @@
       }
     }
 
-    socket.on('received-message', receivedMsg())
+    socket.on('receive socket id', receiveId())
+    socket.on('received-message', receiveMsg())
     socket.on('room created', chatWelcome())
   }
 })()

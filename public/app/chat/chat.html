@@ -2,7 +2,7 @@
   <div id="chat-container" class="tile">
     <div ng-show="$ctrl.isChatOpen" class="tile content box chat-content">
       <ul id="messages">
-        <li ng-repeat="m in $ctrl.chatMessages" ng-class="{even: $index % 2 !== 0}">{{m.message}}</li>
+        <li ng-repeat="m in $ctrl.chatMessages" ng-class="{even: $index % 2 !== 0}"><span ng-class="{'is-client': m.isClient}" class="sender-id">{{m.id}}</span>: {{m.msg}}</li>
       </ul>
     </div>
   </div>

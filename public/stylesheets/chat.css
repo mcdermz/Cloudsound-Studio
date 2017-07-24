@@ -36,11 +36,29 @@
   margin: 0;
 }
 
+.sender-id, .is-client {
+  display: inline-block;
+  max-width: 10rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.sender-id {
+  color: blue;
+}
+
+.is-client {
+  color: red !important;
+}
+
 #messages {
   list-style-type: none;
   margin: 0;
   padding: 0;
+  width: 100%;
   max-height: 20rem;
+  word-wrap: break-word;
   overflow: scroll;
 }
 

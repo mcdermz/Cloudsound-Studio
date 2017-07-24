@@ -14,6 +14,7 @@ io.on('connection', function (socket) {
     socket.join(room)
     let data = { room, id: socket.id}
     io.to(room).emit('room created', data)
+    socket.emit('receive socket id', data)
   })
 
   // socket.on('8 track toggle', function(data) {
@@ -21,7 +22,7 @@ io.on('connection', function (socket) {
   // })
 
   socket.on('sent-message', function(data) {
-    io.to(data.room).emit('received-message', data.msg)
+    io.to(data.room).emit('received-message', data)
   })
 
   socket.on('play all tracks', function(data) {
