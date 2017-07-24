@@ -1,4 +1,4 @@
-<div class="box chat-component">
+<div class="box chat-component tile is-ancestor is-vertical">
   <div class="content">
     <ul id="messages">
       <li ng-repeat="m in $ctrl.chatMessages" ng-class="{even: $index % 2 !== 0}">{{m.message}}</li>

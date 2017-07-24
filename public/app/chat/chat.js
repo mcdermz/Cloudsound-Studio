@@ -29,17 +29,25 @@
       }
     }
 
-    socket.on('received-message', function(received){
-      vm.chatMessages.push({message: received})
-      let msgContainer = document.querySelector('.content')
-      setTimeout(function(){
-        msgContainer.scrollTop = msgContainer.scrollHeight - 202.25
-      },10)
-    })
 
-    socket.on('room created', function(msg) {
-      studioService.socketId = msg.id
-      vm.chatMessages.push({message: `${msg.id} has entered room: ${msg.room}!`})
-    })
+    const receivedMsg = function() {
+      return function(received){
+        vm.chatMessages.push({message: received})
+        // let msgContainer = document.querySelector('.content')
+        // setTimeout(function(){
+        //   msgContainer.scrollTop = msgContainer.scrollHeight - 202.25
+        // },10)
+      }
+    }
+
+    const chatWelcome = function() {
+      return function(msg) {
+        studioService.socketId = msg.id
+        vm.chatMessages.push({message: `${msg.id} has entered room: ${msg.room}`})
+      }
+    }
+    
+    socket.on('received-message', receivedMsg())
+    socket.on('room created', chatWelcome())
   }
 })()
