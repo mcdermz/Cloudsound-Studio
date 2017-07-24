@@ -42,7 +42,6 @@
 
     const receiveMsg = function() {
       return function(msg) {
-        console.log(studioService.socketId);
         if (msg.id == studioService.socketId) {
           msg.isClient = true
         }
@@ -58,7 +57,7 @@
     const chatWelcome = function() {
       return function(msg) {
         studioService.socketId = msg.id
-        vm.chatMessages.push({message: `${msg.id} has entered room: ${msg.room}`})
+        vm.chatMessages.push({msg: `${msg.id} has entered room: ${msg.room}`})
       }
     }
 

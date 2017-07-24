@@ -20,12 +20,12 @@
 }
 
 #expand-chat.pulse {
-  animation: chat-pulse 1s infinite ease-in;
+  animation: chat-pulse 1.5s infinite ease-in-out;
 }
 
 @-webkit-keyframes chat-pulse {
-  85% {
-    background-color: rgba(157, 157, 157, 0.9);
+  50% {
+    background-color: rgba(98, 144, 200, 0.95);
   }
 }
 
@@ -38,18 +38,18 @@
 
 .sender-id, .is-client {
   display: inline-block;
-  max-width: 10rem;
+  max-width: 6rem;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
 
 .sender-id {
-  color: blue;
+  color: red;
 }
 
 .is-client {
-  color: red !important;
+  color: blue !important;
 }
 
 #messages {
@@ -68,5 +68,5 @@
 }
 
 #messages li.even {
-  background: rgb(182, 182, 182);
+  background: rgb(214, 211, 211);
 }

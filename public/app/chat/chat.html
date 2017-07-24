@@ -2,21 +2,22 @@
   <div id="chat-container" class="tile">
     <div ng-show="$ctrl.isChatOpen" class="tile content box chat-content">
       <ul id="messages">
-        <li ng-repeat="m in $ctrl.chatMessages" ng-class="{even: $index % 2 !== 0}"><span ng-class="{'is-client': m.isClient}" class="sender-id">{{m.id}}</span>: {{m.msg}}</li>
+        <li ng-repeat="m in $ctrl.chatMessages" ng-class="{even: $index % 2 !== 0}"><span ng-show="m.id" ng-class="{'is-client': m.isClient}" class="sender-id">{{m.id}}:&nbsp;</span> {{m.msg}}</li>
       </ul>
     </div>
   </div>
   <div class="tile level" ng-keyup="$ctrl.keyup()">
     <div ng-show="!$ctrl.isChatOpen" ng-click="$ctrl.openChat()" class="level-left is-2">
-      <div id="expand-chat" ng-class="{ pulse: $ctrl.hasNewMessage }" class="button is-warning is-small">
+      <div id="expand-chat" ng-class="{ pulse: $ctrl.hasNewMessage }" class="button is-dark is-small">
         <i class="fa fa-comments"></i>
-        <p>&nbsp;Expand Chat</p>
+        <p ng-show="!$ctrl.hasNewMessage">&nbsp;Messages</p>
+        <p ng-show="$ctrl.hasNewMessage">&nbsp;New Message!</p>
       </div>
     </div>
     <div class="column">
       <input ng-blur="$ctrl.isChatOpen = false" ng-model="$ctrl.msg" class="input" id="chat" autocomplete="off"/>
     </div>
-    <div class="level-right is-2">
+    <div class="column is-2">
       <button ng-click="$ctrl.sendChat()" class="button is-info">Send</button>
     </div>
   </div>
