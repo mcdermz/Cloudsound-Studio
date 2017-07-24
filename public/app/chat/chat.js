@@ -12,7 +12,7 @@
     const roomName = $state.params.room
 
     vm.chatMessages = []
-    vm.isChatOpen = true
+    
     vm.keyup = function() {
       if (event.key === 'Enter') {
         vm.sendChat()
