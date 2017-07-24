@@ -12,7 +12,7 @@
     const roomName = $state.params.room
 
     vm.chatMessages = []
-    
+
     vm.keyup = function() {
       if (event.key === 'Enter') {
         vm.sendChat()
@@ -32,16 +32,17 @@
     vm.openChat = function() {
       vm.isChatOpen = !vm.isChatOpen
       document.getElementById('chat').focus()
+      vm.hasNewMessage = false
     }
 
     const receivedMsg = function() {
       return function(received){
         vm.chatMessages.push({message: received})
         let msgContainer = document.querySelector('#messages')
-        console.log(msgContainer);
         setTimeout(function(){
           msgContainer.scrollTop = msgContainer.scrollHeight
         },10)
+        vm.hasNewMessage = true
       }
     }
 

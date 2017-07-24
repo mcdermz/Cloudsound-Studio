@@ -8,7 +8,7 @@
   </div>
   <div class="tile level" ng-keyup="$ctrl.keyup()">
     <div ng-show="!$ctrl.isChatOpen" ng-click="$ctrl.openChat()" class="level-left is-2">
-      <div class="button is-warning is-small">
+      <div id="expand-chat" ng-class="{ pulse: $ctrl.hasNewMessage }" class="button is-warning is-small">
         <i class="fa fa-comments"></i>
         <p>&nbsp;Expand Chat</p>
       </div>

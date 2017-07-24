@@ -19,6 +19,16 @@
   overflow: hidden;
 }
 
+#expand-chat.pulse {
+  animation: chat-pulse 1s infinite ease-in;
+}
+
+@-webkit-keyframes chat-pulse {
+  85% {
+    background-color: rgba(157, 157, 157, 0.9);
+  }
+}
+
 #chat-container {
   position: fixed;
   width: 35%;
