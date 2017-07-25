@@ -39,10 +39,6 @@ Fork and clone the [repo](https://github.com/mcdermz/cloudsound-studios) and mak
 * **[Sean McDermott](https://github.com/mcdermz)** - *Initial work and concept*
 
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
 ## Acknowledgments
 
 * The developers at W3C who build and maintain the amazing Web Audio API
