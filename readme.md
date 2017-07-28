@@ -16,11 +16,12 @@ All you need to do to get started is enter a name and you will be sent to a stud
 As of now, entering a studio gives you the default selection of samples for eight tracks. It is important that all users refresh the page once someone new enters the studio, otherwise the state of the tracks may not sync up properly.
 
 ![](./screenshots/single-track.png)
+
 *An example of the track component with the default settings*
 
-Each track includes a frequency-meter visualization that will activate once the track is playing, a mute button, a solo button, a volume slider and a button displaying the name of the currently selected track.
+Each track includes a frequency-meter visualization that will activate once the track is playing, a mute button, a solo button, a volume slider and a button displaying the name of the currently selected sample.
 
-All of these controls are attached to socket messages, and therefore can be controlled by any user who is in the studio. If one user clicks mute on a track, it will appear as active on all other users' screens that are in the studio and they will not hear the track play.
+All of these controls are attached to socket messages, and can therefore be controlled by any user who is in the studio. If one user clicks mute on a track, it will appear as active on all other users' screens that are in the studio and they will not hear the track play.
 
 If a user adjusts the volume slider, it will have a red highlight on all other users' screens and will be disabled for all users except the one who is currently controlling the fader.  
 
